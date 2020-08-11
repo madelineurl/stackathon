@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react'
 import anime from 'animejs/lib/anime.es.js'
-import {Sampler} from 'tone'
+import {Tone} from 'tone'
 
 import {Navbar} from './components'
 import Routes from './routes'
@@ -8,18 +8,11 @@ import Routes from './routes'
 
 const App = () => {
   const [isLoaded, setLoaded] = useState(false)
-  const sampler = useRef(null)
+  const synth = useRef(null)
   const animationRef = useRef(null)
 
   useEffect(() => {
-    sampler.current = new Sampler(
-      {},
-      {
-        onload: () => {
-          setLoaded(true)
-        }
-      }
-    ).toDestination()
+    synth.current = Tone.Synth().toDestination()
   }, [])
 
   useEffect(() => {
@@ -35,7 +28,7 @@ const App = () => {
     })
   }, [])
 
-  const handleClick = () => sampler.current.triggerAttack('A1')
+  const handleClick = () => synth.current.triggerAttack('A1')
 
   return (
     <>
