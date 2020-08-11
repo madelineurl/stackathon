@@ -1,12 +1,28 @@
-import React, {useRef} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import anime from 'animejs/lib/anime.es.js'
+import {Sampler} from 'tone'
 
 import {Navbar} from './components'
 import Routes from './routes'
+//import pad from './public/pad.mp3'
 
 const App = () => {
+  const [isLoaded, setLoaded] = useState(false)
+  const sampler = useRef(null)
   const animationRef = useRef(null)
-  React.useEffect(() => {
+
+  useEffect(() => {
+    sampler.current = new Sampler(
+      {},
+      {
+        onload: () => {
+          setLoaded(true)
+        }
+      }
+    ).toDestination()
+  }, [])
+
+  useEffect(() => {
     animationRef.current = anime({
       targets: '.el',
       translateX: 250,
@@ -19,6 +35,8 @@ const App = () => {
     })
   }, [])
 
+  const handleClick = () => sampler.current.triggerAttack('A1')
+
   return (
     <>
       <div>
@@ -27,12 +45,22 @@ const App = () => {
       </div>
       <div className="App">
         <button type="button" onClick={() => animationRef.current.restart()}>
-          Restart
+          Restart animation
         </button>
         <div className="el" />
+        <button type="button" disabled={!isLoaded} onClick={handleClick}>
+          Start sound
+        </button>
       </div>
     </>
   )
 }
 
 export default App
+
+// let semitones = 3;
+// let source = new Tone.Player(AudioBuffer);
+// let shift = new Tone.PitchShift(semitones);
+// source.connect(shift);
+// shift.toMaster();
+// source.start();
