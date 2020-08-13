@@ -1,52 +1,43 @@
-import React, {useEffect, useRef} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
+import {PitchSlider} from '../components'
 //import anime from 'animejs/lib/anime.es.js'
 import * as Tone from 'tone'
 import Anime from 'react-anime'
 
 export const Homepage = () => {
   const source = useRef(null)
-  const target = useRef(null)
 
   useEffect(() => {
     source.current = new Tone.Synth().toDestination()
   }, [])
 
-  useEffect(() => {
-    target.current = new Tone.Synth().toDestination()
-  }, [])
-
   const startSourceLoop = () => {
-    console.log('clicked')
     //source.current.triggerAttackRelease('A2', '8n');
-    Tone.Transport.scheduleRepeat(
-      function(time) {
-        source.current.triggerAttackRelease(time)
-      },
-      '8n',
-      '1m'
-    )
-    // const loop = new Tone.Loop(time => {
-    //   console.log('inside source loop!')
-    //   source.current.triggerAttackRelease('A5', '8n', time)
-    // }, '4n').start(0);
-    // loop.start();
+    // Tone.Transport.scheduleRepeat(
+    //   function(time) {
+    //     source.current.triggerAttackRelease(time)
+    //   },
+    //   '4n',
+    //   '1m'
+    // )
+    const loop = new Tone.Loop(time => {
+      console.log('inside source loop!')
+      source.current.triggerAttackRelease('A3', '8n', time)
+    }, '4n').start(0)
+    //loop.start();
     Tone.Transport.start()
-  }
-
-  const startTargetLoop = () => {
-    target.current.triggerAttackRelease('E2', '8n')
   }
 
   return (
     <>
       <div className="homepage-info">
-        <p>Welcome!</p>
-        <p>Click the blue square to hear the source pattern</p>
-        <p>Click the purple square to start the target pattern</p>
-        <p>
-          Drag along the pitch slider or use up and down arrows to adjust the
-          speed until the notes play in harmony
-        </p>
+        <h3>Welcome!</h3>
+        <span>Click the blue square to hear the source pattern</span>
+        <span>Click the purple square to start the target pattern</span>
+        <span>
+          Drag along the pitch slider to adjust the speed until the notes play
+          in harmony
+        </span>
       </div>
       <div className="game-container">
         <div className="source-container">
@@ -64,21 +55,7 @@ export const Homepage = () => {
           </Anime>
         </div>
         <div className="target-container">
-          <Anime
-            easing="easeInSine"
-            duration={1000}
-            direction="normal"
-            loop={false}
-            delay={(el, index) => index * 100}
-            // translateX='10rem'
-            // translateY='5rem'
-            scale={[0.75, 0.9]}
-          >
-            <div className="pitch">
-              <div className="pitch-slider" />
-            </div>
-            <div className="target" ref={target} onClick={startTargetLoop} />
-          </Anime>
+          <PitchSlider />
         </div>
       </div>
     </>
@@ -107,3 +84,18 @@ export default Homepage
 //     easing: 'easeInOutSine'
 //   })
 // }, [])
+
+// useEffect(() => {
+//   Tone.Transport.bpm.value = bpm;
+// }, [bpm])
+
+// useEffect(() => {
+//   if (start) {
+//     Tone.Transport.start();
+//   } else {
+//     Tone.Transport.stop();
+//   }
+// }, [start])
+
+//const [start, startButton] = useStart();
+//const [bpm, setBPM] = useBPM(80);
