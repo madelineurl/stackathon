@@ -37,6 +37,10 @@ export const HomePage = () => {
         <p>Click the button below to hear a synth</p>
       </div>
       <div className="el" onClick={handleClick} />
+      <div className="el" onClick={handleClick} />
+      <div className="el" onClick={handleClick} />
+      <div className="el" onClick={handleClick} />
+      <div className="el" onClick={handleClick} />
     </>
   )
 }
