@@ -1,35 +1,70 @@
-import React, {useRef, useEffect} from 'react'
-import Anime from 'react-anime'
+import React, {useRef, useEffect, useState} from 'react'
+import anime from 'animejs'
 import * as Tone from 'tone'
 
-export default function PitchSlider() {
-  const target = useRef(null)
+const PitchSlider = () => {
+  const [pitch, setPitch] = useState(0)
+  //const animationRef = useRef(null);
+  const pitchRef = useRef(null)
 
   useEffect(() => {
-    target.current = new Tone.Synth().toDestination()
-  }, [])
+    pitchRef.current = anime({
+      targets: '.pitch-slider',
+      translateX: 270,
+      delay: function(el, i) {
+        return i * 100
+      },
+      elasticity: 200,
+      easing: 'easeInOutSine',
+      autoplay: false
+    })
+  })
+  // const pitchSlide = anime({
+  //   targets: pitchRef.current,
+  //   translateX: 270,
+  //   delay: function(el, i) { return i * 100; },
+  //   elasticity: 200,
+  //   easing: 'easeInOutSine',
+  //   autoplay: false
+  // });
 
-  const startTargetLoop = () => {
-    target.current.triggerAttackRelease('E2', '8n')
+  // useEffect(() => {
+  //   pitchSlide.seek(pitchSlide.duration * (pitchSlide.current / 100))
+  // }, [pitch, pitchSlide])
+
+  const handleDragStart = evt => {
+    console.log('drag starting')
+    pitchRef.current.seek(pitchRef.current.duration * (pitchRef.current / 100))
   }
+
+  // const handleDragEnd = evt => {
+  //   //event.preventDefault();
+  //   console.log('drag ending');
+  //   // setDragging(false);
+  // }
 
   return (
     <>
-      <Anime
-        easing="easeInSine"
-        duration={1000}
-        direction="normal"
-        loop={false}
-        delay={(el, index) => index * 100}
-        // translateX='10rem'
-        // translateY='5rem'
-        scale={[0.75, 0.9]}
-      >
-        <div className="pitch">
-          <div className="pitch-slider" />
-        </div>
-        <div className="target" ref={target} onClick={startTargetLoop} />
-      </Anime>
+      <div
+        draggable
+        onDragStart={handleDragStart}
+        // onDragEnd={handleDragEnd}
+        ref={pitchRef}
+        className="pitch-slider"
+      />
     </>
   )
 }
+
+export default PitchSlider
+
+// useEffect(() => {
+//   animationRef.current = anime({
+//     targets: '.pitch-slider',
+//     translateX: 270,
+//     delay: function(el, i) { return i * 100; },
+//     elasticity: 200,
+//     easing: 'easeInOutSine',
+//     autoplay: false
+//   });
+// })

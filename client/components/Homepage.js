@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react'
-import {PitchSlider} from '../components'
+import {PitchFader} from '../components'
 //import anime from 'animejs/lib/anime.es.js'
 import * as Tone from 'tone'
 import Anime from 'react-anime'
@@ -12,19 +12,10 @@ export const Homepage = () => {
   }, [])
 
   const startSourceLoop = () => {
-    //source.current.triggerAttackRelease('A2', '8n');
-    // Tone.Transport.scheduleRepeat(
-    //   function(time) {
-    //     source.current.triggerAttackRelease(time)
-    //   },
-    //   '4n',
-    //   '1m'
-    // )
     const loop = new Tone.Loop(time => {
       console.log('inside source loop!')
-      source.current.triggerAttackRelease('A3', '8n', time)
+      source.current.triggerAttackRelease('A2', '8n', time)
     }, '4n').start(0)
-    //loop.start();
     Tone.Transport.start()
   }
 
@@ -55,7 +46,7 @@ export const Homepage = () => {
           </Anime>
         </div>
         <div className="target-container">
-          <PitchSlider />
+          <PitchFader />
         </div>
       </div>
     </>
@@ -99,3 +90,12 @@ export default Homepage
 
 //const [start, startButton] = useStart();
 //const [bpm, setBPM] = useBPM(80);
+
+//source.current.triggerAttackRelease('A2', '8n');
+// Tone.Transport.scheduleRepeat(
+//   function(time) {
+//     source.current.triggerAttackRelease(time)
+//   },
+//   '4n',
+//   '1m'
+// )
