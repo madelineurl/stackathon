@@ -38,19 +38,17 @@ class Homepage extends React.Component {
   render() {
     return (
       <>
-        <div className="homepage-info">
-          <h3>Welcome!</h3>
-        </div>
+        <div className="homepage-info" />
         <div className="game-container">
           <div className="sounds-container">
             <div>
               <p>Click the blue square to hear the source pattern</p>
               <Anime
-                easing="easeInSine"
-                duration={1000}
+                easing="easeInBounce"
+                duration={2000}
                 direction="normal"
                 delay={(el, index) => index * 50}
-                //translateX='5rem'
+                //translateX='5rem, 0'
                 // translateY='5rem'
                 scale={[0.75, 0.9]}
               >
@@ -60,8 +58,8 @@ class Homepage extends React.Component {
             <div>
               <p>Click the purple square to start the target pattern</p>
               <Anime
-                easing="easeInSine"
-                duration={1000}
+                easing="easeInBounce"
+                duration={2000}
                 direction="normal"
                 loop={false}
                 delay={(el, index) => index * 100}
@@ -76,8 +74,8 @@ class Homepage extends React.Component {
           <PitchSlider />
           {/* <div id='slider-label'>PITCH</div> */}
           <span>
-            Drag along the pitch slider to adjust the speed until the notes play
-            in harmony
+            Drag along the pitch slider to adjust the speed of the target loop
+            until the notes play in harmony
           </span>
         </div>
       </>
