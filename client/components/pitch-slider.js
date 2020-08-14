@@ -16,10 +16,12 @@ class PitchSlider extends React.Component {
 
     const num = Number(this.state.value)
 
-    console.log(Number(this.state.value))
+    console.log(num)
 
     const target = audio._sprite.target
-    audio.rate(num, target)
+    audio.rate(1.5, target)
+
+    //console.log(audio.rate(target));
   }
 
   render() {

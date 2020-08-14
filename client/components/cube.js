@@ -26,7 +26,6 @@ class Cube extends React.Component {
       renderer.render(scene, camera)
     }
     animate()
-    console.log(this.mount)
   }
 
   render() {
