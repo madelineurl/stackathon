@@ -1,38 +1,38 @@
 import React, {useState, useEffect, useRef} from 'react'
-import {PitchSlider} from '../components'
+import {PitchSlider, Cube} from '../components'
 //import anime from 'animejs/lib/anime.es.js'
-import * as Tone from 'tone'
+//import * as Tone from 'tone'
 import Anime from 'react-anime'
+import {Howl} from 'howler'
+//import ConfettiGenerator from "confetti-js"
 
 class Homepage extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {isLoaded: false}
-
-    this.source = new Tone.MembraneSynth({
-      onload: () => {
-        this.setState({isLoaded: true})
+    this.audio = new Howl({
+      src: ['sounds/sounds.webm', 'sounds/sounds.mp3'],
+      loop: true,
+      sprite: {
+        source: [0, 109714.28571428571],
+        target: [111000, 63529.43310657596]
       }
-    }).toDestination()
-    this.target = new Tone.MetalSynth().toDestination()
-  }
-
-  componentDidMount() {
-    Tone.Transport.bpm.value = 100
-    Tone.Transport.start()
+    })
   }
 
   handleSource = () => {
-    this.source.triggerAttack('D#1')
-    // const part = new Tone.Part(time => {
-    //   this.source.triggerAttackRelease('A2', '8n', time)
-    // });
-    // part.loop = true;
-    // part.start(2);
+    this.audio.play('source')
+    // const audio = this.state.audio;
+    // if (!this.state.sourcePlaying) {
+    //   audio.play('source');
+    //   this.setState({ sourcePlaying: true})
+    // } else {
+    //   audio.stop('source');
+    //   this.setState({ sourcePlaying: false})
+    // }
   }
 
   handleTarget = () => {
-    this.target.triggerAttack('A3')
+    this.audio.play('target')
   }
 
   render() {
@@ -71,12 +71,13 @@ class Homepage extends React.Component {
               </Anime>
             </div>
           </div>
-          <PitchSlider />
+          <PitchSlider audio={this.audio} />
           {/* <div id='slider-label'>PITCH</div> */}
           <span>
             Drag along the pitch slider to adjust the speed of the target loop
             until the notes play in harmony
           </span>
+          <Cube />
         </div>
       </>
     )
@@ -84,80 +85,3 @@ class Homepage extends React.Component {
 }
 
 export default Homepage
-
-// useEffect(() => {
-//   animationRef.current = anime({
-//     targets: '.el',
-//     translateX: '50vw',
-//     translateY: 100,
-//     delay: function(el, i) {
-//       return i * 100
-//     },
-//     loop: false,
-//     direction: 'alternate',
-//     easing: 'easeInOutSine'
-//   })
-// }, [])
-
-// useEffect(() => {
-//   Tone.Transport.bpm.value = bpm;
-// }, [bpm])
-
-// useEffect(() => {
-//   if (start) {
-//     Tone.Transport.start();
-//   } else {
-//     Tone.Transport.stop();
-//   }
-// }, [start])
-
-//const [start, startButton] = useStart();
-//const [bpm, setBPM] = useBPM(80);
-
-//source.current.triggerAttackRelease('A2', '8n');
-// Tone.Transport.scheduleRepeat(
-//   function(time) {
-//     source.current.triggerAttackRelease(time)
-//   },
-//   '4n',
-//   '1m'
-// )
-
-// const part = new Tone.Part(time => {
-//   source.current.triggerAttackRelease('A2', '8n', time)
-// }).start(0);
-// part.loop = true;
-
-// const source = useRef(null)
-// const [counter, setCounter] = useState(0);
-// const [loop, setLoop] = useState(null);
-// //const [sourcePlaying, setSourcePlaying] = useState(false);
-
-// useEffect(() => {
-//   source.current = new Tone.PolySynth().toDestination()
-//   // setLoop(new Tone.Loop(song, '16n'));
-//   // Tone.Transport.start();
-//   // loop.start(0);
-// }, [source])
-
-// function song(time) {
-//   source.current.triggerAttackRelease('E3', '8n', time, 1)
-
-//   setCounter((counter) + 1 % 16);
-// }
-
-// const startSourceLoop = () => {
-//   source.current.triggerAttackRelease('E3', '8n') //include time!
-//   // let part = new Tone.Part((time, note) => {
-//   //   source.current.triggerAttackRelease(note, '8n', time)
-//   // }, [0, 'A2']);
-//   // part.loop = true;
-//   // part.start(0);
-//   // if (!sourcePlaying) {
-//   //   part.start()
-//   //   //setSourcePlaying(true)
-//   // } else {
-//   //   part.stop();
-//   //   //setSourcePlaying(false);
-//   // }
-// }
