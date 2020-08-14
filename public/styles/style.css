@@ -73,6 +73,11 @@ nav a {
   justify-content: center;
 }
 
+.game-container span {
+  color: #103767;
+  margin: 15px;
+}
+
 .sounds-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -90,36 +95,51 @@ nav a {
   -webkit-box-pack: space-evenly;
   -ms-flex-pack: space-evenly;
   justify-content: space-evenly;
+  margin: 20px;
 }
 
-.sounds-container span {
+.sounds-container p {
   color: #103767;
-  width: 5vw;
+  margin: 10px;
+  width: 15vw;
+  text-align: center;
 }
 
 .sounds-container div {
-  margin: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 .source {
-  height: 50px;
-  width: 50px;
+  height: 70px;
+  width: 70px;
   background-color: #21426a;
-  border-radius: 5px 5px 5px 5px;
+  border-radius: 20px 20px 20px 20px;
 }
 
 .target {
-  height: 50px;
-  width: 50px;
+  height: 70px;
+  width: 70px;
   background-color: #481948;
-  border-radius: 5px 5px 5px 5px;
+  border-radius: 20px 20px 20px 20px;
 }
 
 .pitch-slider-wrapper {
   display: inline-block;
   width: 20px;
   height: 150px;
-  padding: 0;
+  margin-top: 20px;
 }
 
 .pitch-slider-wrapper input {
@@ -138,13 +158,9 @@ nav a {
   -moz-appearance: none;
   appearance: none;
   width: 100%;
-  /* Full-width */
   height: 25px;
-  /* Specified height */
   background: #545353;
-  /* Grey background */
   outline: none;
-  /* Remove outline */
   opacity: 0.7;
   /* Set transparency (for mouse-over effects on hover) */
   -webkit-transition: 0.2s;
@@ -160,11 +176,17 @@ nav a {
 .pitch-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  background: #171d4b;
+  width: 15px;
+  height: 50px;
+  border-radius: 3px;
+  background: #202450;
   cursor: pointer;
+}
+
+#slider-label {
+  margin: 5px;
+  color: #103767;
+  font-size: 1.5rem;
 }
 
 #about {

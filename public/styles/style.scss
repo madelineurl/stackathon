@@ -39,39 +39,46 @@ nav {
 
 .game-container {
   @include flexCenter(column);
+  span {
+    color: $textColor;
+    margin: 15px;
+  }
 }
 
 .sounds-container {
   @include flexCenter(row);
   justify-content: space-evenly;
-  span {
+  margin: 20px;
+  p {
     color: $textColor;
-    width: 5vw;
+    margin: 10px;
+    width: 15vw;
+    text-align: center;
   }
   div {
-    margin: 15px;
+    @include flexCenter(column);
   }
 }
 
 .source {
-  height: 50px;
-  width: 50px;
+  height: 70px;
+  width: 70px;
   background-color: rgb(33, 66, 106);
-  border-radius: 5px 5px 5px 5px;
+  border-radius: 20px 20px 20px 20px;
 }
 
 .target {
-  height: 50px;
-  width: 50px;
+  height: 70px;
+  width: 70px;
   background-color: rgb(72, 25, 72);
-  border-radius: 5px 5px 5px 5px;
+  border-radius: 20px 20px 20px 20px;
 }
 
 .pitch-slider-wrapper {
   display: inline-block;
   width: 20px;
   height: 150px;
-  padding: 0;
+  margin-top: 20px;
   input {
     width: 150px;
     height: 20px;
@@ -84,10 +91,10 @@ nav {
 .pitch-slider {
   -webkit-appearance: none; /* Override default CSS styles */
   appearance: none;
-  width: 100%; /* Full-width */
-  height: 25px; /* Specified height */
-  background: #545353; /* Grey background */
-  outline: none; /* Remove outline */
+  width: 100%;
+  height: 25px;
+  background: #545353;
+  outline: none;
   opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
   -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
   transition: opacity 0.2s;
@@ -97,12 +104,18 @@ nav {
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background: #171d4b;
+    width: 15px;
+    height: 50px;
+    border-radius: 3px;
+    background: #202450;
     cursor: pointer;
   }
+}
+
+#slider-label {
+  margin: 5px;
+  color: $textColor;
+  font-size: 1.5rem;
 }
 
 #about {

@@ -5,21 +5,46 @@ import * as Tone from 'tone'
 import Anime from 'react-anime'
 
 class Homepage extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {isLoaded: false}
+
+    this.source = new Tone.MembraneSynth({
+      onload: () => {
+        this.setState({isLoaded: true})
+      }
+    }).toDestination()
+    this.target = new Tone.MetalSynth().toDestination()
+  }
+
+  componentDidMount() {
+    Tone.Transport.bpm.value = 100
+    Tone.Transport.start()
+  }
+
+  handleSource = () => {
+    this.source.triggerAttack('D#1')
+    // const part = new Tone.Part(time => {
+    //   this.source.triggerAttackRelease('A2', '8n', time)
+    // });
+    // part.loop = true;
+    // part.start(2);
+  }
+
+  handleTarget = () => {
+    this.target.triggerAttack('A3')
+  }
+
   render() {
     return (
       <>
         <div className="homepage-info">
           <h3>Welcome!</h3>
-          <span>Click the blue square to hear the source pattern</span>
-          <span>Click the purple square to start the target pattern</span>
-          <span>
-            Drag along the pitch slider to adjust the speed until the notes play
-            in harmony
-          </span>
         </div>
         <div className="game-container">
           <div className="sounds-container">
             <div>
+              <p>Click the blue square to hear the source pattern</p>
               <Anime
                 easing="easeInSine"
                 duration={1000}
@@ -29,10 +54,11 @@ class Homepage extends React.Component {
                 // translateY='5rem'
                 scale={[0.75, 0.9]}
               >
-                <div className="source" />
+                <div className="source" onClick={this.handleSource} />
               </Anime>
             </div>
             <div>
+              <p>Click the purple square to start the target pattern</p>
               <Anime
                 easing="easeInSine"
                 duration={1000}
@@ -43,11 +69,16 @@ class Homepage extends React.Component {
                 // translateY='5rem'
                 scale={[0.75, 0.9]}
               >
-                <div className="target" />
+                <div className="target" onClick={this.handleTarget} />
               </Anime>
             </div>
           </div>
           <PitchSlider />
+          {/* <div id='slider-label'>PITCH</div> */}
+          <span>
+            Drag along the pitch slider to adjust the speed until the notes play
+            in harmony
+          </span>
         </div>
       </>
     )
@@ -55,13 +86,6 @@ class Homepage extends React.Component {
 }
 
 export default Homepage
-
-// let semitones = 3;
-// let source = new Tone.Player(AudioBuffer);
-// let shift = new Tone.PitchShift(semitones);
-// source.connect(shift);
-// shift.toMaster();
-// source.start();
 
 // useEffect(() => {
 //   animationRef.current = anime({

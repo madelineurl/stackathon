@@ -12,13 +12,14 @@ class PitchSlider extends React.Component {
 
   handleChange = evt => {
     this.setState({value: evt.target.value})
-    console.log(this.state.value)
+    //console.log(this.state.value)
   }
 
   render() {
     return (
       <div className="pitch-slider-wrapper">
         <input
+          name="pitch-slider"
           type="range"
           step=".001"
           className="pitch-slider"
@@ -27,6 +28,7 @@ class PitchSlider extends React.Component {
           value={this.state.value}
           onChange={this.handleChange}
         />
+        {/* <output htmlFor='pitch-slider' value={this.state.value} /> */}
       </div>
     )
   }
@@ -63,38 +65,3 @@ export default PitchSlider
 //   // useEffect(() => {
 //   //   pitchSlide.seek(pitchSlide.duration * (pitchSlide.current / 100))
 //   // }, [pitch, pitchSlide])
-
-//   const handleDragStart = evt => {
-//     console.log('drag starting')
-//     pitchRef.current.seek(pitchRef.current.duration * (pitchRef.current / 100))
-//   }
-
-//   const handleDragEnd = evt => {
-//     //event.preventDefault();
-//     console.log('drag ending');
-//     // setDragging(false);
-//   }
-
-//   return (
-//     <>
-//       <div
-//         draggable
-//         onDragStart={handleDragStart}
-//         onDragEnd={handleDragEnd}
-//         ref={pitchRef}
-//         className="pitch-slider"
-//       />
-//     </>
-//   )
-// }
-
-// useEffect(() => {
-//   animationRef.current = anime({
-//     targets: '.pitch-slider',
-//     translateX: 270,
-//     delay: function(el, i) { return i * 100; },
-//     elasticity: 200,
-//     easing: 'easeInOutSine',
-//     autoplay: false
-//   });
-// })
