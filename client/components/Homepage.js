@@ -1,68 +1,57 @@
 import React, {useState, useEffect, useRef} from 'react'
-import {PitchFader} from '../components'
+import {PitchSlider} from '../components'
 //import anime from 'animejs/lib/anime.es.js'
 import * as Tone from 'tone'
 import Anime from 'react-anime'
 
-export const Homepage = () => {
-  const source = useRef(null)
-  const [playing, setPlaying] = useState(false)
-
-  useEffect(() => {
-    source.current = new Tone.Synth().toDestination()
-  }, [])
-
-  useEffect(() => {
-    //console.log('starting transport clock');
-    Tone.Transport.bpm.value = 60
-    Tone.Transport.start()
-    //console.log('tone.transport: ', Tone.Transport);
-  })
-
-  const startSourceLoop = () => {
-    //console.log('clicked');
-
-    let loop = new Tone.Loop(time => {
-      console.log(time)
-      console.log('looping')
-      //console.log('source: ', source.current)
-      source.current.triggerAttackRelease('A2', '8n', time)
-    }, '4n')
-    //Tone.Transport.start()
-    loop.start(0)
+class Homepage extends React.Component {
+  render() {
+    return (
+      <>
+        <div className="homepage-info">
+          <h3>Welcome!</h3>
+          <span>Click the blue square to hear the source pattern</span>
+          <span>Click the purple square to start the target pattern</span>
+          <span>
+            Drag along the pitch slider to adjust the speed until the notes play
+            in harmony
+          </span>
+        </div>
+        <div className="game-container">
+          <div className="sounds-container">
+            <div>
+              <Anime
+                easing="easeInSine"
+                duration={1000}
+                direction="normal"
+                delay={(el, index) => index * 50}
+                //translateX='5rem'
+                // translateY='5rem'
+                scale={[0.75, 0.9]}
+              >
+                <div className="source" />
+              </Anime>
+            </div>
+            <div>
+              <Anime
+                easing="easeInSine"
+                duration={1000}
+                direction="normal"
+                loop={false}
+                delay={(el, index) => index * 100}
+                //translateX='-5rem'
+                // translateY='5rem'
+                scale={[0.75, 0.9]}
+              >
+                <div className="target" />
+              </Anime>
+            </div>
+          </div>
+          <PitchSlider />
+        </div>
+      </>
+    )
   }
-
-  return (
-    <>
-      <div className="homepage-info">
-        <h3>Welcome!</h3>
-        <span>Click the blue square to hear the source pattern</span>
-        <span>Click the purple square to start the target pattern</span>
-        <span>
-          Drag along the pitch slider to adjust the speed until the notes play
-          in harmony
-        </span>
-      </div>
-      <div className="game-container">
-        <div className="source-container">
-          <Anime
-            easing="easeInSine"
-            duration={1000}
-            direction="alternate"
-            delay={(el, index) => index * 50}
-            // translateX='10rem'
-            // translateY='5rem'
-            scale={[0.75, 0.9]}
-          >
-            <div className="source" ref={source} onClick={startSourceLoop} />
-          </Anime>
-        </div>
-        <div className="target-container">
-          <PitchFader />
-        </div>
-      </div>
-    </>
-  )
 }
 
 export default Homepage
@@ -116,3 +105,37 @@ export default Homepage
 //   source.current.triggerAttackRelease('A2', '8n', time)
 // }).start(0);
 // part.loop = true;
+
+// const source = useRef(null)
+// const [counter, setCounter] = useState(0);
+// const [loop, setLoop] = useState(null);
+// //const [sourcePlaying, setSourcePlaying] = useState(false);
+
+// useEffect(() => {
+//   source.current = new Tone.PolySynth().toDestination()
+//   // setLoop(new Tone.Loop(song, '16n'));
+//   // Tone.Transport.start();
+//   // loop.start(0);
+// }, [source])
+
+// function song(time) {
+//   source.current.triggerAttackRelease('E3', '8n', time, 1)
+
+//   setCounter((counter) + 1 % 16);
+// }
+
+// const startSourceLoop = () => {
+//   source.current.triggerAttackRelease('E3', '8n') //include time!
+//   // let part = new Tone.Part((time, note) => {
+//   //   source.current.triggerAttackRelease(note, '8n', time)
+//   // }, [0, 'A2']);
+//   // part.loop = true;
+//   // part.start(0);
+//   // if (!sourcePlaying) {
+//   //   part.start()
+//   //   //setSourcePlaying(true)
+//   // } else {
+//   //   part.stop();
+//   //   //setSourcePlaying(false);
+//   // }
+// }
