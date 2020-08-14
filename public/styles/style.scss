@@ -59,21 +59,24 @@ nav {
   width: 70vw;
   div {
     @include flexCenter(column);
+    align-items: space-between;
     margin: 15px;
   }
 }
 
-.target-container {
-  @include flexCenter(column);
-  align-items: space-between;
-  height: 30vh;
-}
+// #target-container {
+//   @include flexCenter(column);
+//   align-items: space-between;
+//   height: 30vh;
+//   margin: 15px;
+// }
 
-.source-container {
-  @include flexCenter(column);
-  align-items: space-between;
-  height: 30vh;
-}
+// #source-container {
+//   @include flexCenter(column);
+//   align-items: space-between;
+//   height: 30vh;
+//   margin: 15px;
+// }
 
 .source {
   height: 70px;
@@ -98,9 +101,9 @@ nav {
 }
 
 .pitch-slider-wrapper {
-  display: inline-block;
-  width: 60px;
-  height: 150px;
+  //display: inline-block;
+  width: 100%;
+  height: 100%;
   margin-top: 40px;
   margin-bottom: 20px;
   input {
@@ -137,9 +140,9 @@ nav {
 }
 
 #slider-label {
-  margin: 5px;
+  margin: 20px;
   color: $textColor;
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 #about {

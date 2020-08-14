@@ -7,7 +7,9 @@ class Game extends React.Component {
     super(props)
     this.state = {
       targetValue: 1.0,
-      sourceValue: 1.0
+      sourceValue: 1.0,
+      sourcePlaying: false,
+      targetPlaying: false
     }
     this.audio = new Howl({
       src: ['sounds/sounds.webm', 'sounds/sounds.mp3'],
@@ -22,26 +24,36 @@ class Game extends React.Component {
   }
 
   startSource = () => {
-    this.source = this.audio.play('source')
+    if (!this.state.sourcePlaying) {
+      this.source = this.audio.play('source')
+      this.setState({sourcePlaying: true})
+    } else {
+      this.audio.pause(this.source)
+      this.setState({sourcePlaying: false})
+    }
   }
 
   startTarget = () => {
-    this.target = this.audio.play('target')
+    if (!this.state.targetPlaying) {
+      this.target = this.audio.play('target')
+      this.setState({targetPlaying: true})
+    } else {
+      this.audio.pause(this.target)
+      this.setState({targetPlaying: false})
+    }
   }
 
   handleSourceChange = evt => {
     this.setState({sourceValue: evt.target.value})
     const rate = Number(this.state.sourceValue)
-
-    console.log('source pitch val', rate)
+    //console.log('source pitch val', rate)
     this.audio.rate(rate, this.source)
   }
 
   handleTargetChange = evt => {
     this.setState({targetValue: evt.target.value})
     const rate = Number(this.state.targetValue)
-
-    console.log('target pitch val', rate)
+    //console.log('target pitch val', rate)
     this.audio.rate(rate, this.target)
   }
 
@@ -49,7 +61,7 @@ class Game extends React.Component {
     return (
       <div className="game-container">
         <div className="sounds-container">
-          <div className="source-container">
+          <div id="source-container">
             <Anime
               easing="easeInSine"
               duration={2000}
@@ -63,7 +75,7 @@ class Game extends React.Component {
             </Anime>
             <div className="pitch-slider-wrapper">
               <input
-                name="pitch-slider"
+                name="source-pitch"
                 type="range"
                 step=".001"
                 className="pitch-slider"
@@ -72,27 +84,27 @@ class Game extends React.Component {
                 value={this.state.sourceValue}
                 onChange={this.handleSourceChange}
               />
-              <div id="slider-label">pitch adj.</div>
+              <div>
+                <div id="slider-label">pitch adj.</div>
+              </div>
             </div>
           </div>
           <div id="target-container">
-            <div>
-              <Anime
-                easing="easeInSine"
-                duration={2000}
-                direction="normal"
-                loop={false}
-                delay={(el, index) => index * 100}
-                //translateX='-5rem'
-                // translateY='5rem'
-                scale={[0.75, 0.9]}
-              >
-                <div className="target" onClick={this.startTarget} />
-              </Anime>
-            </div>
+            <Anime
+              easing="easeInSine"
+              duration={2000}
+              direction="normal"
+              loop={false}
+              delay={(el, index) => index * 100}
+              //translateX='-5rem'
+              // translateY='5rem'
+              scale={[0.75, 0.9]}
+            >
+              <div className="target" onClick={this.startTarget} />
+            </Anime>
             <div className="pitch-slider-wrapper">
               <input
-                name="pitch-slider"
+                name="target-pitch"
                 type="range"
                 step=".001"
                 className="pitch-slider"
@@ -102,7 +114,9 @@ class Game extends React.Component {
                 onChange={this.handleTargetChange}
               />
             </div>
-            <div id="slider-label">pitch adj.</div>
+            <div>
+              <div id="slider-label">pitch adj.</div>
+            </div>
           </div>
         </div>
       </div>

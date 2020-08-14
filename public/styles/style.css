@@ -94,47 +94,10 @@ nav a {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: space-between;
+  -ms-flex-align: space-between;
+  align-items: space-between;
   margin: 15px;
-}
-
-.target-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: space-between;
-  -ms-flex-align: space-between;
-  align-items: space-between;
-  height: 30vh;
-}
-
-.source-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: space-between;
-  -ms-flex-align: space-between;
-  align-items: space-between;
-  height: 30vh;
 }
 
 .source {
@@ -164,9 +127,8 @@ nav a {
 }
 
 .pitch-slider-wrapper {
-  display: inline-block;
-  width: 60px;
-  height: 150px;
+  width: 100%;
+  height: 100%;
   margin-top: 40px;
   margin-bottom: 20px;
 }
@@ -213,9 +175,9 @@ nav a {
 }
 
 #slider-label {
-  margin: 5px;
+  margin: 20px;
   color: #103767;
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 #about {
