@@ -1,7 +1,5 @@
-import React, {useState, useEffect, useRef} from 'react'
-import {PitchSlider, Cube} from '../components'
-//import anime from 'animejs/lib/anime.es.js'
-//import * as Tone from 'tone'
+import React, {useState} from 'react'
+import {Cube} from '../components'
 import Anime from 'react-anime'
 import {Howl} from 'howler'
 //import ConfettiGenerator from "confetti-js"
@@ -42,7 +40,7 @@ class Homepage extends React.Component {
   render() {
     return (
       <>
-        <div className="homepage-info" />
+        {/* <div className="homepage-info" /> */}
         <div className="game-container">
           <div className="sounds-container">
             <div>
@@ -87,12 +85,12 @@ class Homepage extends React.Component {
               onChange={this.handleChange}
             />
           </div>
+
           {/* <div id='slider-label'>PITCH</div> */}
           <span>
             Drag along the pitch slider to adjust the speed of the target loop
             until the notes play in harmony
           </span>
-          <Cube />
         </div>
       </>
     )

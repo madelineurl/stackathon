@@ -3,9 +3,9 @@
  * This way, we can import all of our components from the same place, rather than
  * having to figure out which file they belong to!
  */
+export {default as Game} from './game'
+export {default as Tutorial} from './tutorial'
 export {default as Cube} from './cube'
-export {default as PitchFader} from './pitch-fader'
-export {default as PitchSlider} from './pitch-slider'
 export {default as CardAnime} from './card-anime'
 export {default as About} from './about'
 export {default as Homepage} from './homepage'

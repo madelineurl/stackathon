@@ -28,15 +28,15 @@ nav {
   justify-content: space-between;
 }
 
-.homepage-info {
-  @include flexCenter(column);
-  h3 {
-    color: $textColor;
-  }
-  span {
-    color: $textColor;
-  }
-}
+// .homepage-info {
+//   @include flexCenter(column);
+//   h3 {
+//     color: $textColor;
+//   }
+//   span {
+//     color: $textColor;
+//   }
+// }
 
 .game-container {
   @include flexCenter(column);
@@ -132,7 +132,16 @@ nav {
 
 #about {
   @include flexCenter(column);
-  margin-top: 15vh;
+  margin-top: 5vh;
+  div {
+    text-align: center;
+    color: $textColor;
+    margin: 20px;
+    width: 60vw;
+    h3 {
+      margin: 1px;
+    }
+  }
 }
 
 a {
