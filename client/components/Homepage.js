@@ -9,7 +9,7 @@ import {Howl} from 'howler'
 class Homepage extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {value: 0}
+    this.state = {value: 1.0}
     this.audio = new Howl({
       src: ['sounds/sounds.webm', 'sounds/sounds.mp3'],
       loop: true,
@@ -36,8 +36,6 @@ class Homepage extends React.Component {
 
     console.log(num)
 
-    //const target = this.audio.play('target')
-    //console.log('target', target);
     this.audio.rate(num, this.target)
   }
 
@@ -81,10 +79,10 @@ class Homepage extends React.Component {
             <input
               name="pitch-slider"
               type="range"
-              step=".01"
+              step=".001"
               className="pitch-slider"
-              min="-8"
-              max="8"
+              min="0.9"
+              max="1.1"
               value={this.state.value}
               onChange={this.handleChange}
             />
