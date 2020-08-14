@@ -6,7 +6,7 @@ export const About = () => {
     <>
       <div id="about">
         <div>
-          Important information about the important skill of beatmatching.
+          Important information about the fun and skill of beatmatching.
         </div>
         <Link to="/">Back to the main page</Link>
       </div>

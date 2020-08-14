@@ -11,12 +11,18 @@ const PitchFader = () => {
   }, [])
 
   const startTargetLoop = () => {
-    //target.current.triggerAttackRelease('E2', '8n')
-    const loop = new Tone.Loop(time => {
-      console.log('inside source loop!')
-      source.current.triggerAttackRelease('A2', '8n', time)
-    }, '4n').start(0)
-    Tone.Transport.start()
+    target.current.triggerAttackRelease('E3', '8n') //include time!
+    let part = new Tone.Part(
+      (time, note) => {
+        //console.log('inside source loop!')
+        target.current.triggerAttackRelease(note, '8n', time)
+      },
+      [[0, 'C2'], ['0:2', 'C3'], ['0:3:2', 'G2']]
+    )
+    part.loop = true
+    console.log(part)
+    part.start()
+    //Tone.Transport.start();
   }
 
   return (

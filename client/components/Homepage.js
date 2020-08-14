@@ -6,17 +6,30 @@ import Anime from 'react-anime'
 
 export const Homepage = () => {
   const source = useRef(null)
+  const [playing, setPlaying] = useState(false)
 
   useEffect(() => {
     source.current = new Tone.Synth().toDestination()
   }, [])
 
-  const startSourceLoop = () => {
-    const loop = new Tone.Loop(time => {
-      console.log('inside source loop!')
-      source.current.triggerAttackRelease('A2', '8n', time)
-    }, '4n').start(0)
+  useEffect(() => {
+    //console.log('starting transport clock');
+    Tone.Transport.bpm.value = 60
     Tone.Transport.start()
+    //console.log('tone.transport: ', Tone.Transport);
+  })
+
+  const startSourceLoop = () => {
+    //console.log('clicked');
+
+    let loop = new Tone.Loop(time => {
+      console.log(time)
+      console.log('looping')
+      //console.log('source: ', source.current)
+      source.current.triggerAttackRelease('A2', '8n', time)
+    }, '4n')
+    //Tone.Transport.start()
+    loop.start(0)
   }
 
   return (
@@ -36,7 +49,6 @@ export const Homepage = () => {
             easing="easeInSine"
             duration={1000}
             direction="alternate"
-            loop={false}
             delay={(el, index) => index * 50}
             // translateX='10rem'
             // translateY='5rem'
@@ -99,3 +111,8 @@ export default Homepage
 //   '4n',
 //   '1m'
 // )
+
+// const part = new Tone.Part(time => {
+//   source.current.triggerAttackRelease('A2', '8n', time)
+// }).start(0);
+// part.loop = true;
