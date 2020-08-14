@@ -35,6 +35,31 @@ const Tutorial = props => {
           easy to accidentally make too big of an adjustment and throw your
           whole match out of sync.
         </li>
+        <li>
+          The longer it takes for the target to go out of sync, the closer you
+          are to the correct match. Two sounds whose tempos vary by 1bpm might
+          take 4 bars to go out of sync, whereas two sounds whose tempos vary by
+          0.1bpm might
+        </li>
+        <li>
+          So-called straight-ahead, or four-on-the-floor, beats in 4/4 time are
+          easier to match. So are machine-programmed or produced rhythms. It's
+          far more difficult trying to match unusual time signatures, rhythms
+          with uneven attack times or 'swung' rhythms, or recordings of live
+          musicians.
+        </li>
+        <li>
+          Have fun! Imperfection is part of the beauty of beatmatching. It adds
+          a humanizing element to DJ sets--much like swing humanizes stale
+          beats--and helps us learn to appreciate mistakes. Plus, it's that much
+          more impressive to hear a mistake corrected.
+        </li>
+        <li>
+          WHEN you bring in the target sound is just as important as lining up
+          the tempos. In order to sound seamless, the target has to trigger on a
+          beat that makes sense for the structure of the source. This is called
+          'mixing by measure'.{' '}
+        </li>
       </ul>
     </>
   )

@@ -40,6 +40,10 @@ nav {
 
 .game-container {
   @include flexCenter(column);
+  align-items: center;
+  width: 100vw;
+  height: 50vh;
+  margin: 1rem;
   span {
     color: $textColor;
     margin: 15px;
@@ -50,18 +54,25 @@ nav {
 
 .sounds-container {
   @include flexCenter(row);
-  justify-content: space-evenly;
-  margin: 25px;
-  p {
-    color: $textColor;
-    margin: 10px;
-    width: 15vw;
-    text-align: center;
-  }
+  margin: 2rem;
+  height: 40vh;
+  width: 70vw;
   div {
     @include flexCenter(column);
     margin: 15px;
   }
+}
+
+.target-container {
+  @include flexCenter(column);
+  align-items: space-between;
+  height: 30vh;
+}
+
+.source-container {
+  @include flexCenter(column);
+  align-items: space-between;
+  height: 30vh;
 }
 
 .source {
@@ -88,15 +99,16 @@ nav {
 
 .pitch-slider-wrapper {
   display: inline-block;
-  width: 20px;
+  width: 60px;
   height: 150px;
   margin-top: 40px;
+  margin-bottom: 20px;
   input {
     width: 200px;
     height: 20px;
     margin: 0;
-    transform-origin: 75px 75px;
-    transform: rotate(-90deg);
+    transform-origin: 50px;
+    transform: rotate(90deg);
   }
 }
 
@@ -141,6 +153,19 @@ nav {
     h3 {
       margin: 1px;
     }
+  }
+}
+
+.hint {
+  @include flexCenter(row);
+  justify-content: center;
+  color: $textColor;
+  margin: 10px;
+  text-align: center;
+  p {
+    width: 15vw;
+    margin-left: 60px;
+    margin-right: 60px;
   }
 }
 

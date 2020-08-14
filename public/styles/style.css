@@ -48,6 +48,10 @@ nav a {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 50vh;
+  margin: 1rem;
 }
 
 .game-container span {
@@ -71,17 +75,9 @@ nav a {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-box-pack: space-evenly;
-  -ms-flex-pack: space-evenly;
-  justify-content: space-evenly;
-  margin: 25px;
-}
-
-.sounds-container p {
-  color: #103767;
-  margin: 10px;
-  width: 15vw;
-  text-align: center;
+  margin: 2rem;
+  height: 40vh;
+  width: 70vw;
 }
 
 .sounds-container div {
@@ -99,6 +95,46 @@ nav a {
   -ms-flex-pack: center;
   justify-content: center;
   margin: 15px;
+}
+
+.target-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: space-between;
+  -ms-flex-align: space-between;
+  align-items: space-between;
+  height: 30vh;
+}
+
+.source-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: space-between;
+  -ms-flex-align: space-between;
+  align-items: space-between;
+  height: 30vh;
 }
 
 .source {
@@ -129,19 +165,20 @@ nav a {
 
 .pitch-slider-wrapper {
   display: inline-block;
-  width: 20px;
+  width: 60px;
   height: 150px;
   margin-top: 40px;
+  margin-bottom: 20px;
 }
 
 .pitch-slider-wrapper input {
   width: 200px;
   height: 20px;
   margin: 0;
-  -webkit-transform-origin: 75px 75px;
-  transform-origin: 75px 75px;
-  -webkit-transform: rotate(-90deg);
-  transform: rotate(-90deg);
+  -webkit-transform-origin: 50px;
+  transform-origin: 50px;
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 
 .pitch-slider {
@@ -207,6 +244,32 @@ nav a {
 
 #about div h3 {
   margin: 1px;
+}
+
+.hint {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  justify-content: center;
+  color: #103767;
+  margin: 10px;
+  text-align: center;
+}
+
+.hint p {
+  width: 15vw;
+  margin-left: 60px;
+  margin-right: 60px;
 }
 
 a {
