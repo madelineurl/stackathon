@@ -39,6 +39,10 @@ nav {
   justify-content: space-between;
 }
 
+.homepage-container {
+  @include flexCenter(column);
+}
+
 .center-game {
   @include flexCenter(column);
 }
@@ -47,8 +51,8 @@ nav {
   @include flexCenter(row);
   justify-content: flex-start;
   width: 60vw;
-  height: 60vh;
-  margin: 20px;
+  //height: 60vh;
+  margin: 1rem;
 }
 
 .channel-container {
@@ -84,7 +88,7 @@ nav {
   &:hover {
     background-color: rgb(20, 20, 20);
   }
-  animation-name: tt-spin;
+  //animation-name: tt-spin;
   animation-duration: 1500ms;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
@@ -123,6 +127,7 @@ nav {
 }
 
 .tt-spindle {
+  position: absolute;
   border-radius: 50%;
   background-color: rgb(20, 20, 20);
   height: 0.25rem;

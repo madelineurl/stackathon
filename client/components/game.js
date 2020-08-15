@@ -32,11 +32,13 @@ class Game extends React.Component {
     } else {
       sounds.pause(this.source)
     }
+
     anime({
       targets: '.tt-source',
-      rotate: 360,
-      easing: 'easeInSine',
-      duration: 1000
+      rotate: [{value: '1turn'}],
+      loop: true,
+      easing: 'linear',
+      duration: 2500
     })
   }
 
@@ -47,6 +49,14 @@ class Game extends React.Component {
     } else {
       sounds.pause(this.target)
     }
+
+    anime({
+      targets: '.tt-target',
+      rotate: [{value: '1turn'}],
+      loop: true,
+      easing: 'linear',
+      duration: 2500
+    })
   }
 
   handleSourcePitch = evt => {

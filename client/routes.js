@@ -6,6 +6,7 @@ import {
   Login,
   Signup,
   UserHome,
+  Homepage,
   Game,
   About,
   Tutorial,
@@ -29,6 +30,7 @@ class Routes extends Component {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/about" component={About} />
+        <Route path="/play" component={Game} />
         <Route path="/tutorial/info" component={Tutorial} />
         <Route path="/tutorial/game" component={TutorialGame} />
         {isLoggedIn && (
@@ -36,7 +38,7 @@ class Routes extends Component {
             <Route path="/home" component={UserHome} />
           </Switch>
         )}
-        <Route path="/" component={Game} />
+        <Route path="/" component={Homepage} />
         {/* <Route component={CardAnime} /> */}
       </Switch>
     )

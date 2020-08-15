@@ -1,12 +1,15 @@
 import React from 'react'
-import {Game} from '../components'
+import {Link} from 'react-router-dom'
+import {Turntable} from '../components'
 //import ConfettiGenerator from "confetti-js"
 
 const Homepage = () => {
   return (
     <>
       <div className="homepage-container">
-        <Game />
+        <Link to="/play">
+          <Turntable />
+        </Link>
       </div>
     </>
   )
