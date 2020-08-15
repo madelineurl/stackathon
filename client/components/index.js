@@ -3,6 +3,8 @@
  * This way, we can import all of our components from the same place, rather than
  * having to figure out which file they belong to!
  */
+export {default as VolumeFader} from './vol-fader'
+export {default as PitchFader} from './pitch-fader'
 export {default as TutorialGame} from './tutorial-game'
 export {default as Game} from './game'
 export {default as Tutorial} from './tutorial'

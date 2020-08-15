@@ -12,7 +12,7 @@ $thumb-d: 1.5em;
 
 body {
   height: 100vh;
-  background: rgb(208, 222, 242);
+  background: rgb(233, 233, 233);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
@@ -31,15 +31,14 @@ nav {
   justify-content: space-between;
 }
 
-// .homepage-info {
-//   @include flexCenter(column);
-//   h3 {
-//     color: $textColor;
-//   }
-//   span {
-//     color: $textColor;
-//   }
-// }
+.channel-label-container {
+  @include flexCenter(row);
+  h3 {
+    color: $textColor;
+    margin-left: 9em;
+    margin-right: 9em;
+  }
+}
 
 .game-container {
   @include flexCenter(column);
@@ -54,29 +53,25 @@ nav {
   }
 }
 
-.sounds-container {
-  @include flexCenter(row);
-  justify-content: space-evenly;
-  height: 20vh;
-  width: 60vw;
-}
-
 .faders {
   @include flexCenter(row);
   justify-content: space-between;
-  width: 40vw;
+  width: 50vw;
   div {
     @include flexCenter(row);
-    margin: 25px;
+    margin-left: 25px;
+    margin-right: 25px;
   }
 }
 
 .fader-labels-container {
   @include flexCenter(row);
   justify-content: space-between;
-  width: 40vw;
+  width: 42vw;
   div {
     @include flexCenter(row);
+    justify-content: space-evenly;
+    width: 10vw;
   }
 }
 
@@ -84,25 +79,39 @@ nav {
   margin: 20px;
   color: $textColor;
   font-size: 1rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.sounds-container {
+  @include flexCenter(row);
+  justify-content: space-evenly;
+  height: 15vh;
+  width: 60vw;
+  //margin: 5px;
+  div {
+    margin-left: 5em;
+    margin-right: 5em;
+  }
 }
 
 .source {
-  height: 70px;
-  width: 70px;
-  background-color: rgb(33, 66, 106);
-  border-radius: 20px 20px 20px 20px;
-  box-shadow: 5px 5px rgb(90, 106, 130);
+  height: 5rem;
+  width: 5rem;
+  background-color: rgb(2, 6, 11);
+  border-radius: 50%;
+  //box-shadow: 5px 5px rgb(90, 106, 130);
   &:hover {
     background-color: rgb(19, 44, 74);
   }
 }
 
 .target {
-  height: 70px;
-  width: 70px;
-  background-color: rgb(72, 25, 72);
-  border-radius: 20px 20px 20px 20px;
-  box-shadow: 5px 5px rgb(113, 97, 113);
+  height: 5rem;
+  width: 5rem;
+  background-color: rgb(0, 0, 1);
+  border-radius: 50%;
+  //box-shadow: 5px 5px rgb(113, 97, 113);
   &:hover {
     background-color: rgb(46, 14, 46);
   }
@@ -131,6 +140,7 @@ nav {
   -webkit-appearance: none;
   appearance: none;
   position: absolute;
+  outline: none;
   top: 50%;
   left: 50%;
   margin: 0;
@@ -172,8 +182,7 @@ nav {
   text-align: center;
   p {
     width: 15vw;
-    margin-left: 60px;
-    margin-right: 60px;
+    margin: 1px;
   }
   span {
     width: 50vw;

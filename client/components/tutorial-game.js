@@ -11,9 +11,12 @@ const TutorialGame = () => {
       <Game />
       <div className="hint">
         <span>
-          Drag along the pitch slider to adjust the speed of either loop. Like a
-          turntable pitch fader, the pitch increases as it moves towards you,
-          and decreases as it moves away from you.
+          Drag along the pitch slider to adjust the speed of either loop--Try to
+          match the target with the laser sound in the source.{' '}
+        </span>
+        <span>
+          Like a turntable pitch fader, the pitch increases as it moves towards
+          you, and decreases as it moves away from you.
         </span>
       </div>
     </>

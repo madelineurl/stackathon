@@ -1,6 +1,7 @@
 import React from 'react'
 import Anime from 'react-anime'
 import {Howl} from 'howler'
+import {PitchFader, VolumeFader} from '../components'
 
 class Game extends React.Component {
   constructor(props) {
@@ -14,6 +15,7 @@ class Game extends React.Component {
     this.sounds = new Howl({
       src: ['sounds/sounds.webm', 'sounds/sounds.mp3'],
       loop: true,
+      volume: 0.5,
       sprite: {
         source: [0, 109714.28571428571],
         target: [111000, 63529.43310657596]
@@ -99,75 +101,38 @@ class Game extends React.Component {
         </div>
         <div className="faders">
           <div className="source-faders">
-            <div className="pitch-slider-wrapper">
-              <input
-                name="source-pitch"
-                list="source-pitch-tick"
-                type="range"
-                step=".001"
-                className="pitch-slider"
-                min="0.9"
-                max="1.1"
-                value={this.state.sourceValue}
-                onChange={this.handleSourcePitch}
-              />
-              {/* <datalist id="source-pitch-tick">
-                <option value='-8'/>
-                <option value='0'/>
-                <option value='+8'/>
-                <option>75</option>
-                <option>100</option>
-              </datalist>
-              <div> */}
-            </div>
-            <div className="pitch-slider-wrapper">
-              <input
-                name="source-volume"
-                type="range"
-                step=".01"
-                className="pitch-slider"
-                min="0.0"
-                max="1.0"
-                value={this.state.targetValue}
-                onChange={this.handleSourceVol}
-              />
-            </div>
+            <PitchFader
+              name="source-pitch"
+              value={this.state.sourcePitch}
+              onChange={this.handleSourcePitch}
+            />
+            <VolumeFader
+              name="source-volume"
+              value={this.state.sourceVol}
+              onChange={this.handleSourceVol}
+            />
           </div>
           <div className="target-faders">
-            <div className="pitch-slider-wrapper">
-              <input
-                name="target-pitch"
-                type="range"
-                step=".001"
-                className="pitch-slider"
-                min="0.9"
-                max="1.1"
-                value={this.state.targetValue}
-                onChange={this.handleTargetPitch}
-              />
-            </div>
-            <div className="pitch-slider-wrapper">
-              <input
-                name="target-volume"
-                type="range"
-                step=".01"
-                className="pitch-slider"
-                min="0.0"
-                max="1.0"
-                value={this.state.targetValue}
-                onChange={this.handleTargetVol}
-              />
-            </div>
+            <PitchFader
+              name="target-pitch"
+              value={this.state.targetPitch}
+              onChange={this.handleTargetPitch}
+            />
+            <VolumeFader
+              name="target-volume"
+              value={this.state.targetVol}
+              onChange={this.handleTargetVol}
+            />
           </div>
         </div>
         <div className="fader-labels-container">
           <div className="source-labels">
-            <div className="fader-label">pitch adj.</div>
-            <div className="fader-label"> source vol.</div>
+            <div className="fader-label">pitch</div>
+            <div className="fader-label">vol.</div>
           </div>
           <div className="target-labels">
-            <div className="fader-label">pitch adj.</div>
-            <div className="fader-label"> target vol.</div>
+            <div className="fader-label">pitch</div>
+            <div className="fader-label">vol.</div>
           </div>
         </div>
       </div>

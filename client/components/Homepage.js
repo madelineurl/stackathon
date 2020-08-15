@@ -5,11 +5,11 @@ import {Game} from '../components'
 const Homepage = () => {
   return (
     <>
-      <div className="hint">
-        <p>SOURCE</p>
-        <p>TARGET</p>
-      </div>
       <Game />
+      <div className="channel-label-container">
+        <h3>SOURCE</h3>
+        <h3>TARGET</h3>
+      </div>
       <div className="hint" />
     </>
   )
