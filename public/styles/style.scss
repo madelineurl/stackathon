@@ -41,6 +41,7 @@ nav {
 
 .homepage-container {
   @include flexCenter(column);
+  height: 60vh;
 }
 
 .center-game {

@@ -10,7 +10,8 @@ class Game extends React.Component {
       sourcePitch: 1.0,
       sourceVol: 0.5,
       targetPitch: 1.0,
-      targetVol: 0.5
+      targetVol: 0.5,
+      thirdChannel: false
     }
     this.sounds = new Howl({
       src: ['sounds/sounds.webm', 'sounds/sounds.mp3'],
@@ -87,6 +88,10 @@ class Game extends React.Component {
     this.sounds.volume(vol, this.target)
   }
 
+  addChannel = () => {
+    this.setState({thirdChannel: true})
+  }
+
   render() {
     return (
       <div className="center-game">
@@ -143,7 +148,38 @@ class Game extends React.Component {
               <h3>TARGET</h3>
             </div>
           </div>
+          {this.state.thirdChannel ? (
+            <div className="channel-container">
+              <div className="tt-source">
+                <Turntable handleStart={this.startSource} />
+              </div>
+              <div className="faders-container">
+                <div className="fader-with-label">
+                  <PitchFader
+                    name="source-pitch"
+                    value={this.state.sourcePitch}
+                    onChange={this.handleSourcePitch}
+                  />
+                  <div className="fader-label">pitch</div>
+                </div>
+                <div className="fader-with-label">
+                  <VolumeFader
+                    name="source-volume"
+                    value={this.state.sourceVol}
+                    onChange={this.handleSourceVol}
+                  />
+                  <div className="fader-label">vol.</div>
+                </div>
+              </div>
+              <div className="channel-label-container">
+                <h3>SOURCE</h3>
+              </div>
+            </div>
+          ) : null}
         </div>
+        <button type="button" className="add-channel" onClick={this.addChannel}>
+          add a channel
+        </button>
       </div>
     )
   }
