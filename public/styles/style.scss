@@ -10,6 +10,14 @@ $thumb-d: 1.5em;
   justify-content: center;
 }
 
+@mixin ttWheel($width, $height) {
+  position: absolute;
+  width: $width;
+  height: $height;
+  border-radius: 50%;
+  border: 1px solid rgb(99, 99, 99);
+}
+
 body {
   height: 100vh;
   background: rgb(255, 255, 255);
@@ -71,40 +79,37 @@ nav {
   height: 8rem;
   width: 8rem;
   margin: 3rem;
-  background-color: rgb(20, 20, 20);
+  background-color: rgb(5, 5, 5);
   border-radius: 50%;
   &:hover {
-    background-color: rgb(45, 49, 55);
+    background-color: rgb(20, 20, 20);
   }
-  //animation-name: tt-spin;
-  animation-duration: 2000ms;
+  animation-name: tt-spin;
+  animation-duration: 1500ms;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
 
 .tt-wheel {
   @include flexCenter(column);
-  position: absolute;
-  width: 7em;
-  height: 7rem;
-  border-radius: 50%;
-  border: 1px solid rgb(99, 99, 99);
+  @include ttWheel(7em, 7rem);
 }
 
-.tt-inner-wheel {
+.tt-middle-wheel {
   @include flexCenter(column);
-  position: absolute;
-  width: 6em;
-  height: 6rem;
-  border-radius: 50%;
-  border: 2px solid rgb(99, 99, 99);
+  @include ttWheel(6em, 6rem);
+}
+
+.tt-center-wheel {
+  @include flexCenter(column);
+  @include ttWheel(5em, 5rem);
 }
 
 .tt-cover {
   @include flexCenter(column);
   height: 12.5rem;
   width: 3.5rem;
-  background-color: rgb(19, 19, 19);
+  background-color: rgb(5, 5, 5);
   border-radius: 30px;
   z-index: 999;
 }
@@ -115,7 +120,6 @@ nav {
   width: 1.75rem;
   background-color: rgb(255, 255, 255);
   border-radius: 50%;
-  //z-index: 999;
 }
 
 .tt-spindle {
@@ -136,13 +140,14 @@ nav {
   }
 }
 
-// @keyframes tt-spin {
-//   from {
-//     transform: rotate(0deg);
-//     } to {
-//       transform: rotate(360deg);
-//     }
-// }
+@keyframes tt-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 
 // .target {
 //   height: 6rem;

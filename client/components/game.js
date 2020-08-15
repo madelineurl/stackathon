@@ -1,5 +1,6 @@
 import React from 'react'
 import {Howl} from 'howler'
+import anime from 'animejs'
 import {Turntable, PitchFader, VolumeFader} from '../components'
 
 class Game extends React.Component {
@@ -31,6 +32,12 @@ class Game extends React.Component {
     } else {
       sounds.pause(this.source)
     }
+    anime({
+      targets: '.tt-source',
+      rotate: 360,
+      easing: 'easeInSine',
+      duration: 1000
+    })
   }
 
   startTarget = () => {
@@ -75,7 +82,9 @@ class Game extends React.Component {
       <div className="center-game">
         <div className="game-container">
           <div className="channel-container">
-            <Turntable handleStart={this.startSource} />
+            <div className="tt-source">
+              <Turntable handleStart={this.startSource} />
+            </div>
             <div className="faders-container">
               <div className="fader-with-label">
                 <PitchFader
@@ -99,7 +108,9 @@ class Game extends React.Component {
             </div>
           </div>
           <div className="channel-container">
-            <Turntable handleStart={this.startTarget} />
+            <div className="tt-target">
+              <Turntable handleStart={this.startTarget} />
+            </div>
             <div className="faders-container">
               <div className="fader-with-label">
                 <PitchFader
