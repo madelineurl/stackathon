@@ -1,7 +1,7 @@
 import React from 'react'
-import {Homepage} from '../components'
+import {Link} from 'react-router-dom'
 
-const Tutorial = props => {
+const Tutorial = () => {
   return (
     <>
       <div>
@@ -61,6 +61,7 @@ const Tutorial = props => {
           'mixing by measure'.{' '}
         </li>
       </ul>
+      <Link to="/tutorial/game">Next page for demo</Link>
     </>
   )
 }
