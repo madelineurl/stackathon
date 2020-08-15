@@ -31,48 +31,27 @@ nav {
   justify-content: space-between;
 }
 
-.channel-label-container {
-  @include flexCenter(row);
-  h3 {
-    color: $textColor;
-    margin-left: 9em;
-    margin-right: 9em;
-  }
-}
-
 .game-container {
-  @include flexCenter(column);
+  @include flexCenter(row);
   justify-content: flex-start;
-  width: 100vw;
-  height: 60vh;
-  span {
-    color: $textColor;
-    margin: 15px;
-    width: 20vw;
-    text-align: center;
-  }
-}
-
-.faders {
-  @include flexCenter(row);
-  justify-content: space-between;
   width: 50vw;
-  div {
-    @include flexCenter(row);
-    margin-left: 25px;
-    margin-right: 25px;
-  }
+  height: 60vh;
+  //margin: 20px;
 }
 
-.fader-labels-container {
+.channel-container {
+  @include flexCenter(column);
+  width: 60vw;
+}
+
+.faders-container {
   @include flexCenter(row);
-  justify-content: space-between;
-  width: 42vw;
-  div {
-    @include flexCenter(row);
-    justify-content: space-evenly;
-    width: 10vw;
-  }
+  justify-content: center;
+}
+
+.fader-with-label {
+  @include flexCenter(column);
+  width: 8vw;
 }
 
 .fader-label {
@@ -83,21 +62,10 @@ nav {
   margin-right: 2rem;
 }
 
-.sounds-container {
-  @include flexCenter(row);
-  justify-content: space-evenly;
-  height: 15vh;
-  width: 60vw;
-  //margin: 5px;
-  div {
-    margin-left: 5em;
-    margin-right: 5em;
-  }
-}
-
-.source {
-  height: 5rem;
-  width: 5rem;
+.sound {
+  height: 7rem;
+  width: 7rem;
+  margin: 3rem;
   background-color: rgb(2, 6, 11);
   border-radius: 50%;
   //box-shadow: 5px 5px rgb(90, 106, 130);
@@ -106,16 +74,17 @@ nav {
   }
 }
 
-.target {
-  height: 5rem;
-  width: 5rem;
-  background-color: rgb(0, 0, 1);
-  border-radius: 50%;
-  //box-shadow: 5px 5px rgb(113, 97, 113);
-  &:hover {
-    background-color: rgb(46, 14, 46);
-  }
-}
+// .target {
+//   height: 6rem;
+//   width: 6rem;
+//   margin: 20px;
+//   background-color: rgb(0, 0, 1);
+//   border-radius: 50%;
+//   //box-shadow: 5px 5px rgb(113, 97, 113);
+//   &:hover {
+//     background-color: rgb(46, 14, 46);
+//   }
+// }
 
 .pitch-slider-wrapper {
   float: left;

@@ -74,7 +74,7 @@ class Game extends React.Component {
   render() {
     return (
       <div className="game-container">
-        <div className="sounds-container">
+        <div className="channel-container">
           <Anime
             easing="easeInSine"
             duration={2000}
@@ -84,8 +84,31 @@ class Game extends React.Component {
             // translateY='5rem'
             scale={[0.75, 0.9]}
           >
-            <div className="source" onClick={this.startSource} />
+            <div className="sound" onClick={this.startSource} />
           </Anime>
+          <div className="faders-container">
+            <div className="fader-with-label">
+              <PitchFader
+                name="source-pitch"
+                value={this.state.sourcePitch}
+                onChange={this.handleSourcePitch}
+              />
+              <div className="fader-label">pitch</div>
+            </div>
+            <div className="fader-with-label">
+              <VolumeFader
+                name="source-volume"
+                value={this.state.sourceVol}
+                onChange={this.handleSourceVol}
+              />
+              <div className="fader-label">vol.</div>
+            </div>
+          </div>
+          <div className="channel-label-container">
+            <h3>SOURCE</h3>
+          </div>
+        </div>
+        <div className="channel-container">
           <Anime
             easing="easeInSine"
             duration={2000}
@@ -96,43 +119,28 @@ class Game extends React.Component {
             // translateY='5rem'
             scale={[0.75, 0.9]}
           >
-            <div className="target" onClick={this.startTarget} />
+            <div className="sound" onClick={this.startTarget} />
           </Anime>
-        </div>
-        <div className="faders">
-          <div className="source-faders">
-            <PitchFader
-              name="source-pitch"
-              value={this.state.sourcePitch}
-              onChange={this.handleSourcePitch}
-            />
-            <VolumeFader
-              name="source-volume"
-              value={this.state.sourceVol}
-              onChange={this.handleSourceVol}
-            />
+          <div className="faders-container">
+            <div className="fader-with-label">
+              <PitchFader
+                name="target-pitch"
+                value={this.state.targetPitch}
+                onChange={this.handleTargetPitch}
+              />
+              <div className="fader-label">pitch</div>
+            </div>
+            <div className="fader-with-label">
+              <VolumeFader
+                name="target-volume"
+                value={this.state.targetVol}
+                onChange={this.handleTargetVol}
+              />
+              <div className="fader-label">vol.</div>
+            </div>
           </div>
-          <div className="target-faders">
-            <PitchFader
-              name="target-pitch"
-              value={this.state.targetPitch}
-              onChange={this.handleTargetPitch}
-            />
-            <VolumeFader
-              name="target-volume"
-              value={this.state.targetVol}
-              onChange={this.handleTargetVol}
-            />
-          </div>
-        </div>
-        <div className="fader-labels-container">
-          <div className="source-labels">
-            <div className="fader-label">pitch</div>
-            <div className="fader-label">vol.</div>
-          </div>
-          <div className="target-labels">
-            <div className="fader-label">pitch</div>
-            <div className="fader-label">vol.</div>
+          <div className="channel-label-container">
+            <h3>TARGET</h3>
           </div>
         </div>
       </div>
