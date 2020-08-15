@@ -5,7 +5,9 @@ import {Game} from '../components'
 const Homepage = () => {
   return (
     <>
-      <Game />
+      <div className="homepage-container">
+        <Game />
+      </div>
     </>
   )
 }

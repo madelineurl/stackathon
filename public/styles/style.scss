@@ -12,7 +12,7 @@ $thumb-d: 1.5em;
 
 body {
   height: 100vh;
-  background: rgb(233, 233, 233);
+  background: rgb(255, 255, 255);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
@@ -31,12 +31,16 @@ nav {
   justify-content: space-between;
 }
 
+.center-game {
+  @include flexCenter(column);
+}
+
 .game-container {
   @include flexCenter(row);
   justify-content: flex-start;
-  width: 50vw;
+  width: 60vw;
   height: 60vh;
-  //margin: 20px;
+  margin: 20px;
 }
 
 .channel-container {
@@ -62,17 +66,74 @@ nav {
   margin-right: 2rem;
 }
 
+.tt-vinyl {
+  @include flexCenter(column);
+  height: 8rem;
+  width: 8rem;
+  margin: 3rem;
+  background-color: rgb(20, 20, 20);
+  border-radius: 50%;
+  &:hover {
+    background-color: rgb(45, 49, 55);
+  }
+  //animation-name: tt-spin;
+  animation-duration: 2000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.tt-wheel {
+  @include flexCenter(column);
+  width: 7em;
+  height: 7rem;
+  border-radius: 50%;
+  border: 1px solid rgb(99, 99, 99);
+}
+
+.tt-cover {
+  @include flexCenter(column);
+
+  height: 10rem;
+  width: 4rem;
+  background-color: rgb(89, 80, 80);
+  border-radius: 20px;
+  z-index: 999;
+}
+
+.tt-label {
+  @include flexCenter(column);
+  height: 1.75rem;
+  width: 1.75rem;
+  background-color: rgb(255, 255, 255);
+  border-radius: 50%;
+  //z-index: 999;
+}
+
+.tt-spindle {
+  border-radius: 50%;
+  background-color: rgb(20, 20, 20);
+  height: 0.25rem;
+  width: 0.25rem;
+}
+
 .sound {
   height: 7rem;
   width: 7rem;
   margin: 3rem;
   background-color: rgb(2, 6, 11);
   border-radius: 50%;
-  //box-shadow: 5px 5px rgb(90, 106, 130);
   &:hover {
-    background-color: rgb(19, 44, 74);
+    background-color: rgb(45, 49, 55);
   }
 }
+
+// @keyframes tt-spin {
+//   from {
+//     transform: rotate(0deg);
+//     } to {
+//       transform: rotate(360deg);
+//     }
+// }
 
 // .target {
 //   height: 6rem;

@@ -6,7 +6,7 @@ import {
   Login,
   Signup,
   UserHome,
-  Homepage,
+  Game,
   About,
   Tutorial,
   TutorialGame
@@ -36,7 +36,7 @@ class Routes extends Component {
             <Route path="/home" component={UserHome} />
           </Switch>
         )}
-        <Route path="/" component={Homepage} />
+        <Route path="/" component={Game} />
         {/* <Route component={CardAnime} /> */}
       </Switch>
     )
