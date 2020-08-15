@@ -21,11 +21,11 @@ class Turntable extends React.Component {
       <>
         <div className="tt">
           <div className="tt-vinyl" onClick={this.props.handleStart}>
-            <div className="tt-wheel">
-              <div className="tt-cover">
-                <div className="tt-label">
-                  <div className="tt-spindle" />
-                </div>
+            <div className="tt-wheel" />
+            <div className="tt-inner-wheel" />
+            <div className="tt-cover">
+              <div className="tt-label">
+                <div className="tt-spindle" />
               </div>
             </div>
           </div>
