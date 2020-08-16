@@ -103,6 +103,7 @@ nav {
 .tt-wheel {
   @include flexCenter(column);
   @include ttWheel(7em, 7rem);
+  border: 2px solid grey;
 }
 
 .tt-middle-wheel {
@@ -113,6 +114,7 @@ nav {
 .tt-center-wheel {
   @include flexCenter(column);
   @include ttWheel(5em, 5rem);
+  border: 2px solid grey;
 }
 
 .tt-cover {

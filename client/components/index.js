@@ -1,3 +1,4 @@
+export {default as Channel} from './channel'
 export {default as Turntable} from './turntable'
 export {default as VolumeFader} from './vol-fader'
 export {default as PitchFader} from './pitch-fader'

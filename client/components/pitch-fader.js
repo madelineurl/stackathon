@@ -5,7 +5,7 @@ const PitchFader = props => {
     <div className="pitch-slider-wrapper">
       <input
         name={props.name}
-        list="source-pitch-tick"
+        //list="source-pitch-tick"
         type="range"
         step=".001"
         className="pitch-slider"
@@ -14,13 +14,13 @@ const PitchFader = props => {
         value={props.value}
         onChange={props.onChange}
       />
-      <datalist id="source-pitch-tick">
+      {/* <datalist id="source-pitch-tick">
         <option value="-8" />
         <option value="0" />
         <option value="+8" />
         <option>75</option>
         <option>100</option>
-      </datalist>
+      </datalist> */}
     </div>
   )
 }

@@ -197,6 +197,7 @@ nav a {
   height: 7rem;
   border-radius: 50%;
   border: 1px solid #636363;
+  border: 2px solid grey;
 }
 
 .tt-middle-wheel {
@@ -239,6 +240,7 @@ nav a {
   height: 5rem;
   border-radius: 50%;
   border: 1px solid #636363;
+  border: 2px solid grey;
 }
 
 .tt-cover {
