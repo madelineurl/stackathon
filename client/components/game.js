@@ -32,10 +32,10 @@ class Game extends React.Component {
     this.targetTwo = 0
   }
 
-  startSource = () => {
+  startSource = (spriteName = 'source') => {
     const sounds = this.sounds
     if (!sounds.playing(this.source)) {
-      this.source = sounds.play('source')
+      this.source = sounds.play(spriteName)
       //source is being reassigned a NEW audio id for the source each time
       //this is why pressing play again starts it from the beginning
       //ideal for this purpose, but creates difficulty for changing source
@@ -140,7 +140,7 @@ class Game extends React.Component {
     } else {
       // this.source = sounds._sprite[evt.target.value];
       // console.log(this.source);
-      this.source = sounds.play(evt.target.value)
+      this.startSource(evt.target.value)
     }
   }
 
@@ -176,7 +176,7 @@ class Game extends React.Component {
             <div className="tt-source">
               <Turntable
                 animClass=".tt-source"
-                handleStart={this.startSource}
+                handleStart={() => this.startSource('source')}
               />
             </div>
             <div className="faders-container">
