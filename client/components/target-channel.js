@@ -1,9 +1,9 @@
 import React from 'react'
-import {Turntable, PitchFader, VolumeFader} from '../components'
-import anime from 'animejs'
 import {Howl} from 'howler'
+import anime from 'animejs'
+import {Turntable, PitchFader, VolumeFader} from '../components'
 
-class SourceChannel extends React.Component {
+class TargetChannel extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -19,13 +19,13 @@ class SourceChannel extends React.Component {
         target: [111000, 63529.43310657596]
       }
     })
-    this.sourceId = 0
-    this.sourceName = 'source'
+    this.targetId = 0
+    this.targetName = 'target'
     this.soundKeys = Object.keys(this.sounds._sprite)
     //keeps track of the sound 'id' returned from a playing howl
   }
 
-  startSource = name => {
+  startTarget = name => {
     const sounds = this.sounds
     if (!sounds.playing(this.sourceId)) {
       this.sourceId = sounds.play(name)
@@ -35,7 +35,7 @@ class SourceChannel extends React.Component {
     }
 
     anime({
-      targets: `.tt-source`,
+      targets: '.tt-target',
       rotate: [{value: '1turn'}],
       loop: true,
       easing: 'linear',
@@ -46,45 +46,45 @@ class SourceChannel extends React.Component {
   handlePitch = evt => {
     const sounds = this.sounds
     this.setState({pitch: evt.target.value})
-
     const rate = Number(this.state.pitch)
+    //console.log('rate', rate)
     sounds.rate(rate, this.sourceId)
   }
 
   handleVol = evt => {
     const sounds = this.sounds
     this.setState({vol: evt.target.value})
-
     const vol = Number(this.state.vol)
+    //console.log('vol', vol)
     sounds.volume(vol, this.sourceId)
   }
 
   changeSound = evt => {
     const sounds = this.sounds
-    this.sourceName = evt.target.value
-    if (sounds.playing(this.sourceId)) {
-      sounds.pause(this.sourceId)
-      this.sourceId = sounds.play(this.sourceName)
+    this.targetName = evt.target.value
+    if (sounds.playing(this.targetId)) {
+      sounds.pause(this.targetId)
+      this.targetId = sounds.play(this.targetName)
     } else {
-      this.sourceId = this.startSource(this.sourceName)
+      this.targetId = this.startTarget(this.targetName)
     }
   }
 
   render() {
     return (
       <div className="channel-container">
-        <div className="tt-source">
+        <div className="tt-target">
           <Turntable
-            animClass="tt-source"
+            animClass="tt-target"
             handleStart={() => {
-              this.startSource(this.sourceName)
+              this.startTarget(this.targetName)
             }}
           />
         </div>
         <div className="faders-container">
           <div className="fader-with-label">
             <PitchFader
-              name="source-pitch"
+              name="target-pitch"
               value={this.state.pitch}
               onChange={this.handlePitch}
             />
@@ -92,7 +92,7 @@ class SourceChannel extends React.Component {
           </div>
           <div className="fader-with-label">
             <VolumeFader
-              name="source-volume"
+              name="target-volume"
               value={this.state.vol}
               onChange={this.handleVol}
             />
@@ -121,4 +121,4 @@ class SourceChannel extends React.Component {
   }
 }
 
-export default SourceChannel
+export default TargetChannel
