@@ -1,6 +1,7 @@
 export {default as NewGame} from './modularized-game'
 export {default as SourceChannel} from './channel'
 export {default as TargetChannel} from './target-channel'
+export {default as ThirdChannel} from './third-channel'
 export {default as Turntable} from './turntable'
 export {default as VolumeFader} from './vol-fader'
 export {default as PitchFader} from './pitch-fader'

@@ -75,7 +75,7 @@ class SourceChannel extends React.Component {
       <div className="channel-container">
         <div className="tt-source">
           <Turntable
-            animClass="tt-source"
+            animClass=".tt-source"
             handleStart={() => {
               this.startSource(this.sourceName)
             }}
@@ -106,6 +106,7 @@ class SourceChannel extends React.Component {
         ) : (
           <select
             //value={this.source}
+            className="change-sound"
             onChange={this.changeSound}
           >
             <option>choose sound</option>

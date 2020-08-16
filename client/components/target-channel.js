@@ -27,11 +27,11 @@ class TargetChannel extends React.Component {
 
   startTarget = name => {
     const sounds = this.sounds
-    if (!sounds.playing(this.sourceId)) {
-      this.sourceId = sounds.play(name)
+    if (!sounds.playing(this.targetId)) {
+      this.targetId = sounds.play(name)
       //console.log(this.source)
     } else {
-      sounds.pause(this.sourceId)
+      sounds.pause(this.targetId)
     }
 
     anime({
@@ -75,7 +75,7 @@ class TargetChannel extends React.Component {
       <div className="channel-container">
         <div className="tt-target">
           <Turntable
-            animClass="tt-target"
+            animClass=".tt-target"
             handleStart={() => {
               this.startTarget(this.targetName)
             }}
@@ -106,6 +106,7 @@ class TargetChannel extends React.Component {
         ) : (
           <select
             //value={this.source}
+            className="change-sound"
             onChange={this.changeSound}
           >
             <option>choose sound</option>
