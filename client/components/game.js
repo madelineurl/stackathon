@@ -11,7 +11,10 @@ class Game extends React.Component {
       sourceVol: 0.5,
       targetPitch: 1.0,
       targetVol: 0.5,
-      thirdChannel: false
+      targetTwoPitch: 1.0,
+      targetTwoVol: 0.5,
+      thirdChannel: false,
+      tutorialMode: this.props.tutorialMode
     }
     this.sounds = new Howl({
       src: ['sounds/sounds.webm', 'sounds/sounds.mp3'],
@@ -19,11 +22,14 @@ class Game extends React.Component {
       volume: 0.5,
       sprite: {
         source: [0, 109714.28571428571],
-        target: [111000, 63529.43310657596]
+        target: [111000, 63529.43310657596],
+        targetTwo: [176000, 54857.14285714286]
       }
     })
+    this.soundKeys = Object.keys(this.sounds._sprite)
     this.source = 0
     this.target = 0
+    this.targetTwo = 0
   }
 
   startSource = () => {
@@ -92,6 +98,48 @@ class Game extends React.Component {
     this.setState({thirdChannel: true})
   }
 
+  startTargetTwo = () => {
+    const sounds = this.sounds
+    if (!sounds.playing(this.targetTwo)) {
+      this.targetTwo = sounds.play('targetTwo')
+    } else {
+      sounds.pause(this.targetTwo)
+    }
+
+    anime({
+      targets: '.tt-source',
+      rotate: [{value: '1turn'}],
+      loop: true,
+      easing: 'linear',
+      duration: 2500
+    })
+  }
+
+  handleTargetTwoPitch = evt => {
+    this.setState({targetTwoPitch: evt.target.value})
+    const rate = Number(this.state.targetTwoPitch)
+    //console.log('target pitch val', rate)
+    this.sounds.rate(rate, this.targetTwo)
+  }
+
+  handleTargetTwoVol = evt => {
+    this.setState({targetTwoVol: evt.target.value})
+    const vol = Number(this.state.targetTwoVol)
+    //console.log('target vol', vol);
+    this.sounds.volume(vol, this.targetTwo)
+  }
+
+  changeSourceSound = evt => {
+    const sounds = this.sounds
+    if (sounds.playing(this.source)) {
+      sounds.pause(this.source)
+      this.source = sounds.play(evt.target.value)
+    } else {
+      this.source = sounds.play(evt.target.value)
+      sounds.pause(this.source)
+    }
+  }
+
   render() {
     return (
       <div className="center-game">
@@ -118,9 +166,22 @@ class Game extends React.Component {
                 <div className="fader-label">vol.</div>
               </div>
             </div>
-            <div className="channel-label-container">
-              <h3>SOURCE</h3>
-            </div>
+            {this.state.tutorialMode ? (
+              <div className="channel-label-container">
+                <h3>SOURCE</h3>
+              </div>
+            ) : (
+              <select
+                value={this.state.value}
+                onChange={this.changeSourceSound}
+              >
+                {this.soundKeys.map((name, index) => (
+                  <option key={index} className="sound-options" value={name}>
+                    {name}
+                  </option>
+                ))}
+              </select>
+            )}
           </div>
           <div className="channel-container">
             <div className="tt-target">
@@ -144,42 +205,43 @@ class Game extends React.Component {
                 <div className="fader-label">vol.</div>
               </div>
             </div>
-            <div className="channel-label-container">
-              <h3>TARGET</h3>
-            </div>
+            {this.state.tutorialMode ? (
+              <div className="channel-label-container">
+                <h3>TARGET</h3>
+              </div>
+            ) : null}
           </div>
           {this.state.thirdChannel ? (
             <div className="channel-container">
               <div className="tt-source">
-                <Turntable handleStart={this.startSource} />
+                <Turntable handleStart={this.startTargetTwo} />
               </div>
               <div className="faders-container">
                 <div className="fader-with-label">
                   <PitchFader
-                    name="source-pitch"
-                    value={this.state.sourcePitch}
-                    onChange={this.handleSourcePitch}
+                    name="target-two-pitch"
+                    value={this.state.targetTwoPitch}
+                    onChange={this.handleTargetTwoPitch}
                   />
                   <div className="fader-label">pitch</div>
                 </div>
                 <div className="fader-with-label">
                   <VolumeFader
-                    name="source-volume"
-                    value={this.state.sourceVol}
-                    onChange={this.handleSourceVol}
+                    name="target-two-volume"
+                    value={this.state.targetTwoVol}
+                    onChange={this.handleTargetTwoVol}
                   />
                   <div className="fader-label">vol.</div>
                 </div>
               </div>
-              <div className="channel-label-container">
-                <h3>SOURCE</h3>
-              </div>
             </div>
           ) : null}
         </div>
-        <button type="button" className="add-channel" onClick={this.addChannel}>
-          add a channel
-        </button>
+        {this.state.tutorialMode ? null : (
+          <div className="add-channel" onClick={this.addChannel}>
+            add channel
+          </div>
+        )}
       </div>
     )
   }

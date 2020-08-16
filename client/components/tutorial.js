@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 
 const Tutorial = () => {
   return (
-    <>
+    <div className="tutorial-info">
       <div>
         When you first start out, it can feel impossible to even tell the
         difference between the two source sounds.
@@ -62,7 +62,7 @@ const Tutorial = () => {
         </li>
       </ul>
       <Link to="/tutorial/game">Next page for demo</Link>
-    </>
+    </div>
   )
 }
 

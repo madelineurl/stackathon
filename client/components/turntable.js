@@ -3,17 +3,14 @@ import anime from 'animejs'
 
 class Turntable extends React.Component {
   componentDidMount() {
-    // anime({
-    //   targets: '.tt-vinyl',
-    //   rotate: {
-    //     value: 360,
-    //     loop: true
-    //   },
-    //   delay: (el, index) => index * 50,
-    //   duration: 2000,
-    //   // direction: 'normal',
-    //   easing: 'easeInSine'
-    // })
+    anime({
+      targets: '.tt-vinyl',
+      delay: (el, index) => index * 50,
+      duration: 1500,
+      direction: 'normal',
+      easing: 'easeInSine',
+      scale: [0.9, 1.2]
+    })
   }
 
   render() {

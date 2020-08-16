@@ -25,7 +25,7 @@ export const About = () => {
           equipment to practice on) tend to be expensive and inaccessible.
         </div>
         <div>
-          Enter *app name*. A lot of apps teach you how to DJ, but few help you
+          Enter Shiftpitch! A lot of apps teach you how to DJ, but few help you
           hone the skill of beatmatching using just your ears. Practicing
           beatmatching improves your rhythm by training your ears to be
           sensitive to minute changes in tempo. The precision required to match
@@ -34,7 +34,7 @@ export const About = () => {
           matching!
         </div>
         <div>
-          <Link to="/">Back to the main page</Link>
+          <Link to="/play">Back to the main page</Link>
         </div>
       </div>
     </>

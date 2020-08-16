@@ -1,15 +1,15 @@
 import React from 'react'
 import {Game} from '../components'
 
-const TutorialGame = () => {
+const TutorialMode = () => {
   return (
     <>
-      <div className="hint">
-        <p>Click the blue square to start the source pattern</p>
-        <p>Click the purple square to start the target pattern</p>
+      <div className="hint-top">
+        <p>Click the source record to start the source pattern</p>
+        <p>Click the target record to start the target pattern</p>
       </div>
-      <Game />
-      <div className="hint">
+      <Game tutorialMode={true} />
+      <div className="hint-bottom">
         <span>
           Drag along the pitch slider to adjust the speed of either loop--Try to
           match the target with the laser sound in the source.{' '}
@@ -23,4 +23,4 @@ const TutorialGame = () => {
   )
 }
 
-export default TutorialGame
+export default TutorialMode

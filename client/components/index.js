@@ -1,16 +1,11 @@
-/**
- * `components/index.js` exists simply as a 'central export' for our components.
- * This way, we can import all of our components from the same place, rather than
- * having to figure out which file they belong to!
- */
 export {default as Turntable} from './turntable'
 export {default as VolumeFader} from './vol-fader'
 export {default as PitchFader} from './pitch-fader'
-export {default as TutorialGame} from './tutorial-game'
-export {default as Game} from './game'
 export {default as Tutorial} from './tutorial'
-export {default as Cube} from './cube'
-export {default as CardAnime} from './card-anime'
+export {default as TutorialMode} from './tutorial-mode'
+export {default as Game} from './game'
+//export {default as Cube} from './cube'
+//export {default as CardAnime} from './card-anime'
 export {default as About} from './about'
 export {default as Homepage} from './homepage'
 export {default as Navbar} from './navbar'

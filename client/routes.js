@@ -10,7 +10,7 @@ import {
   Game,
   About,
   Tutorial,
-  TutorialGame
+  TutorialMode
 } from './components'
 import {me} from './store'
 
@@ -32,7 +32,7 @@ class Routes extends Component {
         <Route path="/about" component={About} />
         <Route path="/play" component={Game} />
         <Route path="/tutorial/info" component={Tutorial} />
-        <Route path="/tutorial/game" component={TutorialGame} />
+        <Route path="/tutorial/game" component={TutorialMode} />
         {isLoggedIn && (
           <Switch>
             <Route path="/home" component={UserHome} />
