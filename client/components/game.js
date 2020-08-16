@@ -135,8 +135,9 @@ class Game extends React.Component {
       sounds.pause(this.source)
       this.source = sounds.play(evt.target.value)
     } else {
+      // this.source = sounds._sprite[evt.target.value];
+      // console.log(this.source);
       this.source = sounds.play(evt.target.value)
-      sounds.pause(this.source)
     }
   }
 
@@ -172,9 +173,10 @@ class Game extends React.Component {
               </div>
             ) : (
               <select
-                value={this.state.value}
+                //value={this.source}
                 onChange={this.changeSourceSound}
               >
+                <option>choose sound</option>
                 {this.soundKeys.map((name, index) => (
                   <option key={index} className="sound-options" value={name}>
                     {name}
@@ -209,7 +211,18 @@ class Game extends React.Component {
               <div className="channel-label-container">
                 <h3>TARGET</h3>
               </div>
-            ) : null}
+            ) : (
+              <select
+                //value={this.state.value}
+                onChange={this.changeTargetSound}
+              >
+                {this.soundKeys.map((name, index) => (
+                  <option key={index} className="target-options" value={name}>
+                    {name}
+                  </option>
+                ))}
+              </select>
+            )}
           </div>
           {this.state.thirdChannel ? (
             <div className="channel-container">
@@ -234,6 +247,20 @@ class Game extends React.Component {
                   <div className="fader-label">vol.</div>
                 </div>
               </div>
+              <select
+                //value={this.state.value}
+                onChange={this.changeTargetSound}
+              >
+                {this.soundKeys.map((name, index) => (
+                  <option
+                    key={index}
+                    className="target-two-options"
+                    value={name}
+                  >
+                    {name}
+                  </option>
+                ))}
+              </select>
             </div>
           ) : null}
         </div>
