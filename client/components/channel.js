@@ -2,7 +2,7 @@ import React from 'react'
 import {Turntable, PitchFader, VolumeFader} from '../components'
 import anime from 'animejs'
 
-class Channel extends React.Component {
+class BaseChannel extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -106,4 +106,4 @@ class Channel extends React.Component {
   }
 }
 
-export default Channel
+export default BaseChannel

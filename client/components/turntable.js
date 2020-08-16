@@ -4,7 +4,7 @@ import anime from 'animejs'
 class Turntable extends React.Component {
   componentDidMount() {
     anime({
-      targets: '.tt-vinyl',
+      targets: this.props.animClass,
       delay: (el, index) => index * 50,
       duration: 1500,
       direction: 'normal',

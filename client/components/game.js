@@ -13,7 +13,7 @@ class Game extends React.Component {
       targetVol: 0.5,
       targetTwoPitch: 1.0,
       targetTwoVol: 0.5,
-      thirdChannel: false,
+      addChannel: false,
       tutorialMode: this.props.tutorialMode
     }
     this.sounds = new Howl({
@@ -36,6 +36,9 @@ class Game extends React.Component {
     const sounds = this.sounds
     if (!sounds.playing(this.source)) {
       this.source = sounds.play('source')
+      //source is being reassigned a NEW audio id for the source each time
+      //this is why pressing play again starts it from the beginning
+      //ideal for this purpose, but creates difficulty for changing source
     } else {
       sounds.pause(this.source)
     }
@@ -95,7 +98,7 @@ class Game extends React.Component {
   }
 
   addChannel = () => {
-    this.setState({thirdChannel: true})
+    this.setState({addChannel: true})
   }
 
   startTargetTwo = () => {
@@ -107,7 +110,7 @@ class Game extends React.Component {
     }
 
     anime({
-      targets: '.tt-source',
+      targets: '.tt-target-two',
       rotate: [{value: '1turn'}],
       loop: true,
       easing: 'linear',
@@ -129,7 +132,7 @@ class Game extends React.Component {
     this.sounds.volume(vol, this.targetTwo)
   }
 
-  changeSourceSound = evt => {
+  changeSource = evt => {
     const sounds = this.sounds
     if (sounds.playing(this.source)) {
       sounds.pause(this.source)
@@ -141,13 +144,40 @@ class Game extends React.Component {
     }
   }
 
+  changeTarget = evt => {
+    const sounds = this.sounds
+    if (sounds.playing(this.target)) {
+      sounds.pause(this.target)
+      this.target = sounds.play(evt.target.value)
+    } else {
+      // this.source = sounds._sprite[evt.target.value];
+      // console.log(this.source);
+      this.target = sounds.play(evt.target.value)
+    }
+  }
+
+  changeThird = evt => {
+    const sounds = this.sounds
+    if (sounds.playing(this.targetTwo)) {
+      sounds.pause(this.targetTwo)
+      this.targetTwo = sounds.play(evt.target.value)
+    } else {
+      // this.source = sounds._sprite[evt.target.value];
+      // console.log(this.source);
+      this.targetTwo = sounds.play(evt.target.value)
+    }
+  }
+
   render() {
     return (
       <div className="center-game">
         <div className="game-container">
           <div className="channel-container">
             <div className="tt-source">
-              <Turntable handleStart={this.startSource} />
+              <Turntable
+                animClass=".tt-source"
+                handleStart={this.startSource}
+              />
             </div>
             <div className="faders-container">
               <div className="fader-with-label">
@@ -173,8 +203,9 @@ class Game extends React.Component {
               </div>
             ) : (
               <select
-                //value={this.source}
-                onChange={this.changeSourceSound}
+                className="change-sound"
+                //value={this.state.value}
+                onChange={this.changeSource}
               >
                 <option>choose sound</option>
                 {this.soundKeys.map((name, index) => (
@@ -187,7 +218,10 @@ class Game extends React.Component {
           </div>
           <div className="channel-container">
             <div className="tt-target">
-              <Turntable handleStart={this.startTarget} />
+              <Turntable
+                animClass=".tt-target"
+                handleStart={this.startTarget}
+              />
             </div>
             <div className="faders-container">
               <div className="fader-with-label">
@@ -213,9 +247,11 @@ class Game extends React.Component {
               </div>
             ) : (
               <select
+                className="change-sound"
                 //value={this.state.value}
-                onChange={this.changeTargetSound}
+                onChange={this.changeTarget}
               >
+                <option>choose sound</option>
                 {this.soundKeys.map((name, index) => (
                   <option key={index} className="target-options" value={name}>
                     {name}
@@ -224,10 +260,13 @@ class Game extends React.Component {
               </select>
             )}
           </div>
-          {this.state.thirdChannel ? (
+          {this.state.addChannel ? (
             <div className="channel-container">
-              <div className="tt-source">
-                <Turntable handleStart={this.startTargetTwo} />
+              <div className="tt-target-two">
+                <Turntable
+                  animClass=".tt-target-two"
+                  handleStart={this.startTargetTwo}
+                />
               </div>
               <div className="faders-container">
                 <div className="fader-with-label">
@@ -248,9 +287,11 @@ class Game extends React.Component {
                 </div>
               </div>
               <select
+                className="change-sound"
                 //value={this.state.value}
-                onChange={this.changeTargetSound}
+                onChange={this.changeThird}
               >
+                <option>choose sound</option>
                 {this.soundKeys.map((name, index) => (
                   <option
                     key={index}
