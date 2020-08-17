@@ -34,6 +34,13 @@ class TargetChannel extends React.Component {
     const sounds = this.sounds
     if (!sounds.playing(this.targetId)) {
       this.targetId = sounds.play(name)
+      anime({
+        targets: `.tt-target`,
+        rotate: [{value: '1turn'}],
+        loop: true,
+        easing: 'linear',
+        duration: 2500
+      })
     } else {
       sounds.pause(this.targetId)
     }

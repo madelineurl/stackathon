@@ -1,5 +1,5 @@
 import React from 'react'
-//import anime from 'animejs'
+import anime from 'animejs'
 import {SourceChannel, TargetChannel, ThirdChannel} from '../components'
 
 class Game extends React.Component {
@@ -9,6 +9,16 @@ class Game extends React.Component {
       thirdChannel: false,
       tutorialMode: this.props.tutorialMode
     }
+  }
+
+  componentDidMount() {
+    anime({
+      targets: '.game-container',
+      opacity: [0, 1],
+      //translateY: ['100vh', 0],
+      easing: 'easeInSine',
+      duration: 1200
+    })
   }
 
   addChannel = () => {

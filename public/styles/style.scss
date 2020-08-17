@@ -1,4 +1,6 @@
-$textColor: rgb(16, 55, 103);
+$textColor: rgb(66, 51, 89);
+$mPlus: 'Mplus 1p', sans-serif;
+$pageFont: 'Roboto Mono', sans-serif;
 $track-width: 12.5em;
 $track-height: 0.25em;
 $thumb-d: 1.5em;
@@ -21,8 +23,7 @@ $thumb-d: 1.5em;
 body {
   height: 100vh;
   background: rgb(255, 255, 255);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: $pageFont;
 }
 
 nav {
@@ -31,6 +32,7 @@ nav {
   a {
     display: inline-block;
     margin: 1em;
+    font-size: 1rem;
   }
 }
 
@@ -46,6 +48,8 @@ nav {
 .homepage-container {
   @include flexCenter(column);
   height: 60vh;
+  font-family: 'Titillium Web', sans-serif;
+  color: $textColor;
 }
 
 .center-game {
@@ -67,6 +71,11 @@ nav {
 .channel-container {
   @include flexCenter(column);
   width: 60vw;
+  font-family: $mPlus;
+}
+
+.channel-label-container {
+  font-family: $pageFont;
 }
 
 .faders-container {
@@ -202,8 +211,7 @@ nav {
   -webkit-appearance: none;
   appearance: none;
   font-size: 0.9rem;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: $pageFont;
   font-weight: 500;
   color: #444;
   padding: 0.4em 1em 0.3em 0.5em;
@@ -237,6 +245,9 @@ nav {
 
 .add-channel {
   margin: 3rem;
+  font-size: 1rem;
+  font-family: $pageFont;
+  color: $textColor;
 }
 
 #about {
@@ -246,7 +257,7 @@ nav {
     text-align: center;
     color: $textColor;
     margin: 20px;
-    width: 60vw;
+    width: 50em;
     h3 {
       margin: 1px;
     }
@@ -256,10 +267,10 @@ nav {
 .tutorial-info {
   @include flexCenter(column);
   color: $textColor;
-  //width: 60vw;
+  margin-top: 2rem;
   li {
     margin: 10px;
-    width: 60vw;
+    width: 50rem;
   }
 }
 
@@ -267,24 +278,26 @@ nav {
   @include flexCenter(row);
   width: 100vw;
   height: 5vh;
-  justify-content: center;
+  //justify-content: center;
   color: $textColor;
   text-align: center;
   p {
     width: 15vw;
-    margin-left: 8rem;
-    margin-right: 8rem;
+    margin-left: 6rem;
+    margin-right: 6rem;
   }
 }
 
 .hint-bottom {
   @include flexCenter(row);
-  justify-content: space-evenly;
+  //justify-content: space-evenly;
   height: 20vh;
   color: $textColor;
   text-align: center;
   span {
     width: 20vw;
+    margin-left: 5rem;
+    margin-right: 5rem;
   }
 }
 

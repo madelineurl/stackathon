@@ -4,14 +4,7 @@ import {Link} from 'react-router-dom'
 const Tutorial = () => {
   return (
     <div className="tutorial-info">
-      <div>
-        When you first start out, it can feel impossible to even tell the
-        difference between the two source sounds.
-      </div>
-      <div>
-        That's ok! All it takes is developing a practice. But here are a few
-        tips to get you started...
-      </div>
+      <div>New to beatmatching? Here are a few tips to get you started:</div>
       <ul>
         <li>
           Matching mid-range frequencies like claps and snares tends to be
@@ -39,7 +32,7 @@ const Tutorial = () => {
           The longer it takes for the target to go out of sync, the closer you
           are to the correct match. Two sounds whose tempos vary by 1bpm might
           take 4 bars to go out of sync, whereas two sounds whose tempos vary by
-          0.1bpm might
+          0.1bpm might take 64 bars to start audibly losing precision.
         </li>
         <li>
           So-called straight-ahead, or four-on-the-floor, beats in 4/4 time are

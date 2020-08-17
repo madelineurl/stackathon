@@ -32,19 +32,18 @@ class ThirdChannel extends React.Component {
 
   startSound = name => {
     const sounds = this.sounds
-    if (!sounds.playing(this.sourceId)) {
+    if (!sounds.playing(this.soundId)) {
       this.soundId = sounds.play(name)
+      anime({
+        targets: '.tt-target-two',
+        rotate: [{value: '1turn'}],
+        loop: true,
+        easing: 'linear',
+        duration: 2500
+      })
     } else {
       sounds.pause(this.soundId)
     }
-
-    anime({
-      targets: '.tt-target-two',
-      rotate: [{value: '1turn'}],
-      loop: true,
-      easing: 'linear',
-      duration: 2500
-    })
   }
 
   handlePitch = evt => {

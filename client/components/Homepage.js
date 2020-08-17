@@ -10,6 +10,7 @@ const Homepage = () => {
         <Link to="/play">
           <Turntable />
         </Link>
+        <h1>shiftpitch</h1>
       </div>
     </>
   )

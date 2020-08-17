@@ -35,7 +35,7 @@ class SourceChannel extends React.Component {
 
     if (!sounds.playing(this.sourceId)) {
       this.sourceId = sounds.play(name)
-      const spin = anime({
+      anime({
         targets: `.tt-source`,
         rotate: [{value: '1turn'}],
         loop: true,
@@ -51,7 +51,6 @@ class SourceChannel extends React.Component {
   handlePitch = evt => {
     const sounds = this.sounds
     this.setState({pitch: evt.target.value})
-
     const rate = Number(this.state.pitch)
     sounds.rate(rate, this.sourceId)
   }

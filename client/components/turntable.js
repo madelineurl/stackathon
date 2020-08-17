@@ -6,7 +6,7 @@ class Turntable extends React.Component {
     anime({
       targets: this.props.animClass,
       delay: (el, index) => index * 50,
-      duration: 1500,
+      duration: 1200,
       direction: 'normal',
       easing: 'easeInSine',
       scale: [0.9, 1.3]

@@ -4,9 +4,9 @@ const morgan = require('morgan')
 const compression = require('compression')
 const session = require('express-session')
 const passport = require('passport')
-const SequelizeStore = require('connect-session-sequelize')(session.Store)
+// const SequelizeStore = require('connect-session-sequelize')(session.Store)
 const db = require('./db')
-const sessionStore = new SequelizeStore({db})
+//const sessionStore = new SequelizeStore({db})
 const PORT = process.env.PORT || 3000
 const app = express()
 module.exports = app
@@ -40,7 +40,7 @@ const createApp = () => {
   app.use(
     session({
       secret: process.env.SESSION_SECRET || 'my best friend is Cody',
-      store: sessionStore,
+      //store: sessionStore,
       resave: false,
       saveUninitialized: false
     })
@@ -86,7 +86,7 @@ const startListening = () => {
 const syncDb = () => db.sync()
 
 async function bootApp() {
-  await sessionStore.sync()
+  //await sessionStore.sync()
   await syncDb()
   await createApp()
   await startListening()
