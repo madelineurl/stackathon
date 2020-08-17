@@ -15,9 +15,13 @@ class TargetChannel extends React.Component {
       loop: true,
       volume: 0.5,
       sprite: {
-        clap: [0, 63529.43310657596],
-        'club-beat': [65000, 109714.28571428572],
-        'fast-hats': [176000, 53333.33333333334]
+        clap: [49000, 63529.43310657596],
+        'club-beat': [114000, 109714.28571428572],
+        'fast-hats': [225000, 53333.333333333314],
+        'eager-pads': [0, 41142.857142857145],
+        'bmore-club': [46000, 1818.1859410430832],
+        'nice-pads': [280000, 27428.571428571446],
+        'frantic-hat': [43000, 1776.3265306122448]
       }
     })
     this.targetId = 0
