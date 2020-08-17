@@ -15,32 +15,33 @@ class SourceChannel extends React.Component {
       loop: true,
       volume: 0.5,
       sprite: {
-        source: [0, 109714.28571428571],
-        target: [111000, 63529.43310657596]
+        clap: [0, 63529.43310657596],
+        'club-beat': [65000, 109714.28571428572],
+        'fast-hats': [176000, 53333.33333333334]
       }
     })
     this.sourceId = 0
-    this.sourceName = 'source'
+    this.sourceName = 'club-beat'
     this.soundKeys = Object.keys(this.sounds._sprite)
     //keeps track of the sound 'id' returned from a playing howl
   }
 
   startSource = name => {
     const sounds = this.sounds
-    if (!sounds.playing(this.sourceId)) {
-      this.sourceId = sounds.play(name)
-      //console.log(this.source)
-    } else {
-      sounds.pause(this.sourceId)
-    }
-
-    anime({
+    const spin = anime({
       targets: `.tt-source`,
       rotate: [{value: '1turn'}],
       loop: true,
       easing: 'linear',
       duration: 2500
     })
+
+    if (!sounds.playing(this.sourceId)) {
+      this.sourceId = sounds.play(name)
+    } else {
+      sounds.pause(this.sourceId)
+      spin.pause()
+    }
   }
 
   handlePitch = evt => {

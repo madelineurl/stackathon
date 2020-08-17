@@ -9,7 +9,7 @@ class Turntable extends React.Component {
       duration: 1500,
       direction: 'normal',
       easing: 'easeInSine',
-      scale: [0.9, 1.2]
+      scale: [0.9, 1.3]
     })
   }
 

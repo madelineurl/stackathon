@@ -8,7 +8,6 @@ import {
   UserHome,
   Homepage,
   Game,
-  NewGame,
   About,
   Tutorial,
   TutorialMode
@@ -32,7 +31,7 @@ class Routes extends Component {
         <Route path="/signup" component={Signup} />
         <Route path="/about" component={About} />
         <Route path="/play" component={Game} />
-        <Route path="/test" component={NewGame} />
+        {/* <Route path="/test" component={NewGame} /> */}
         <Route path="/tutorial/info" component={Tutorial} />
         <Route path="/tutorial/game" component={TutorialMode} />
         {isLoggedIn && (
